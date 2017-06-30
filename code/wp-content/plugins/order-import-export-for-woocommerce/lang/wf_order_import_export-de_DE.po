@@ -1,0 +1,802 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Product CSV Import Export 2.1.9\n"
+"POT-Creation-Date: 2016-08-12 15:17+0530\n"
+"PO-Revision-Date: 2016-08-12 17:37+0530\n"
+"Last-Translator: \n"
+"Language-Team: Hikeforce <support@hikeforce.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\wordpress\\wp-content\\plugins\\\n"
+"X-Poedit-SearchPath-0: product-csv-import-export-for-woocommerce\n"
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:74
+msgid "Import Export"
+msgstr "Import Export"
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:75
+msgid "Support"
+msgstr "Unterstützen"
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:92
+msgid "Successfully uploaded via FTP."
+msgstr "Erfolgreich per FTP hochgeladen."
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:95
+msgid "Error while uploading via FTP."
+msgstr "Fehler beim Hochladen via FTP."
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:144
+msgid "Import <strong>coupons</strong> to your store via a csv file."
+msgstr ""
+"Import <strong> Produkte </ strong>, um Ihr Geschäft über eine CSV-Datei."
+
+#: product-csv-import-export-for-woocommerce/product-csv-import-export.php:145
+msgid "Cron Import <strong>coupons</strong> to your store via a csv file."
+msgstr ""
+"Cron Import <strong> Produkte </ strong>, um Ihr Geschäft über eine CSV-"
+"Datei."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-admin-screen.php:25
+msgid ""
+"Product CSV Import Export requires the function <code>mb_detect_encoding</"
+"code> to import and export CSV files. Please ask your hosting provider to "
+"enable this function."
+msgstr ""
+"Produkt-CSV-Import Export erfordert die Funktion <code> mb_detect_encoding </"
+"code> Importieren und Exportieren von CSV-Dateien. Bitte fragen Sie Ihren "
+"Hosting-Provider diese Funktion zu aktivieren."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-admin-screen.php:33
+msgid "Product Im-Ex"
+msgstr "Produkt-Im-Ex"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-admin-screen.php:89
+msgid "Download Coupons as CSV"
+msgstr "Download Produkte als CSV"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:36
+#, php-format
+msgid "Failed resize: %s is an invalid image ID."
+msgstr "Fehlgeschlagen Resize:%s ist ein ungültiger Bild-ID."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:39
+msgid "Your user account doesn't have permission to resize images"
+msgstr "Ihr Benutzerkonto ist nicht berechtigt, Bilder, um die Größe"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:44
+#, php-format
+msgid "The originally uploaded image file cannot be found at %s"
+msgstr ""
+"Die ursprünglich hochgeladenen Bilddatei kann nicht in%s gefunden werden"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:53
+msgid "Unknown failure reason."
+msgstr "Unbekannter Fehler Grund."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:58
+#, php-format
+msgid "&quot;%1$s&quot; (ID %2$s) was successfully resized in %3$s seconds."
+msgstr "&quot;%1$s&quot; (ID %2$s) wurde in %3$s erfolgreich angepasst."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-ajax-handler.php:65
+#, php-format
+msgid ""
+"&quot;%1$s&quot; (ID %2$s) failed to resize. The error message was: %3$s"
+msgstr ""
+"&quot;%1$s&quot; (ID %2$s) fehlgeschlagen zu ändern. Die Fehlermeldung "
+"lautet:%3$s"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-cron.php:25
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-import-cron.php:29
+#, php-format
+msgid "Every %d minutes"
+msgstr "Alle %d Minuten"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-import-cron.php:89
+msgid "Failed processing import. Reason:"
+msgstr "Failed processing Import. Grund:"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-import-cron.php:107
+msgid "Fetching file failed. Reason:"
+msgstr "Das Abrufen der Datei fehlgeschlagen. Grund:"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:22
+msgid "Delete Coupons"
+msgstr "löschen Produkte"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:23
+msgid "Delete ALL coupons"
+msgstr "Löschen alle Produkte,"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:24
+msgid "This tool will delete all coupons allowing you to start fresh."
+msgstr "Dieses Tool löscht alle Produkte so dass Sie neu zu beginnen."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:28
+msgid "Delete Variations"
+msgstr "löschen Variationen"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:29
+msgid "Delete ALL variations"
+msgstr "Löschen Alle Varianten"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:30
+msgid "This tool will delete all variations allowing you to start fresh."
+msgstr "Dieses Tool wird alle Varianten löschen so dass Sie frisch zu starten."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:34
+msgid "Delete Orphans"
+msgstr "löschen Orphans"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:35
+msgid "Delete orphaned variations"
+msgstr "Löschen verwaiste Variationen"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:36
+msgid "This tool will delete variations which have no parent."
+msgstr "Dieses Tool wird Variationen löschen, die keine Eltern haben."
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:62
+#, php-format
+msgid "%d Coupons Deleted"
+msgstr "%d Produkte Gelöschte"
+
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:84
+#: product-csv-import-export-for-woocommerce/includes/class-wf-prodimpexpcsv-system-status-tools.php:99
+#, php-format
+msgid "%d Variations Deleted"
+msgstr "%d Variationen Gelöschte"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:253
+#, php-format
+msgid "> Row %s - preparing for merge."
+msgstr "> Reihe %s - Vorbereitung auf die Zusammenführung ."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:258
+msgid "> > Cannot merge without id or sku. Importing instead."
+msgstr ">> Kann ohne ID oder sku nicht fusionieren. Importieren statt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:278
+#, php-format
+msgid "> > Skipped. Cannot find product with sku %s. Importing instead."
+msgstr ""
+">> Übersprungen . Kann nicht Produkt mit sku%s finden. Importieren statt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:285
+#, php-format
+msgid "> > Found product with ID %s."
+msgstr ">> Gefunden Produkt mit ID %s."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:296
+#, php-format
+msgid "> Row %s - preparing for import."
+msgstr "> Reihe %s -  Vorbereitung für den Import."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:300
+msgid "> > Skipped. No post_title set for new product."
+msgstr ">> Übersprungen . Kein post_title  für neue Produkt eingestellt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:301
+msgid "No post_title set for new product."
+msgstr "Kein post_title für neue Produkt eingestellt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:304
+msgid "> > Skipped. No parent set for new variation product."
+msgstr ">> Übersprungen . Kein Elternteil für neue Variation Produkt gesetzt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:306
+msgid "No parent set for new variation product."
+msgstr "Kein Elternteil für neue Variation Produkt gesetzt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:544
+#, php-format
+msgid "> > Skipping taxonomy \"%s\" - it does not exist."
+msgstr ">> Skipping Taxonomie \"%s\" - Es existiert nicht."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:553
+#, php-format
+msgid "> > > Product type \"%s\" not allowed - using simple."
+msgstr ">>> Produkttyp  \"%s\" nicht erlaubt - mit einfachen."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:599
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:624
+msgid "> > ("
+msgstr "> > ("
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:664
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:762
+#, php-format
+msgid "> > Failed to import term %s %s"
+msgstr ">> Fehlgeschlagen Begriff importieren %s %s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:713
+#, php-format
+msgid "> > Attribute taxonomy \"%s\" does not exist. Adding it. Nicename: %s"
+msgstr ""
+">> Attribut Taxonomie   \"%s\"  existiert nicht. Zugabe davon. Nizza Namen %s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:721
+#, php-format
+msgid "> > Attribute taxonomy %s already exists in DB."
+msgstr ">> Taxonomie %s Attribut  existiert bereits in der DB."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:760
+#, php-format
+msgid "> > Inserted Raw Term %s ID = %s"
+msgstr ">> Eingefügte Zeile Begriff %s ID =%s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-csv-parser.php:766
+#, php-format
+msgid "> > Raw Term %s ID = %s"
+msgstr ">> Raw  Begriff %s ID =%s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:91
+msgid "Error with handle_upload!"
+msgstr "Error with handle_upload!"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:116
+msgid "Row"
+msgstr "Reihe"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:117
+msgid "SKU"
+msgstr "SKU"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:118
+msgid "Product"
+msgstr "Produkt"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:119
+msgid "Status Msg"
+msgstr "Der Status Msg"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:212
+msgid "AJAX Error"
+msgstr "AJAX Fehler"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:312
+#, php-format
+msgid ""
+"The resize request was abnormally terminated (ID %s). This is likely due to "
+"the image exceeding available memory or some other type of fatal error."
+msgstr ""
+"Die Resize-Antrag wurde nicht ordnungsgemäß beendet (ID %s). Dies ist "
+"wahrscheinlich auf das Bild mehr als den verfügbaren Speicher oder eine "
+"andere Art von schwerwiegenden Fehler."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:317
+msgid "thumbnails regenerated"
+msgstr "Thumbnails regenerieren"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:355
+msgid "Error finding uploaded file!"
+msgstr "Fehlersuche hochgeladene Datei!"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:425
+msgid "Step 1..."
+msgstr "Schritt 1..."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:430
+msgid "Step 2..."
+msgstr "Schritt 2..."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:445
+msgid "Finalizing..."
+msgstr "Finalisierung ..."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:451
+msgid "Linking upsells..."
+msgstr "Linking upsells ..."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:460
+msgid "Linking crosssells..."
+msgstr "Linking Kreuz verkauft ..."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:468
+msgid "Finished. Import complete."
+msgstr "Fertig. Import abgeschlossen."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:538
+msgid ""
+"Columns are pre-selected using the Mapping file: \"<b style=\"color:gray\">"
+msgstr ""
+"Die Spalten werden vorab ausgewählt, um die Mapping-Datei mit: \"<b style="
+"\"color:gray\">"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:571
+msgid "Processing coupons."
+msgstr "Verarbeitungsprodukte."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:582
+msgid "Finished processing coupons."
+msgstr "Fertige Verarbeitungsprodukte ."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:597
+msgid "Parsing coupons CSV."
+msgstr "Parsing CSV-Produkte."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:602
+msgid "Finished parsing coupons CSV."
+msgstr "Fertige Parsing Produkte CSV."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:644
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:661
+msgid "Sorry, there has been an error."
+msgstr "Sorry, es ist ein Fehler aufgetreten."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:768
+msgid "Product already processed"
+msgstr "Produkt bereits bearbeitet"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:769
+msgid "> Post ID already processed. Skipping."
+msgstr "> Post-ID bereits verarbeitet. Skipping."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:775
+msgid "Skipping auto-draft"
+msgstr "Auslassen von Auto-Entwurf"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:776
+msgid "> Skipping auto-draft."
+msgstr "> Auslassen von auto-Entwurf."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:790
+#, php-format
+msgid "> &#8220;%s&#8221;"
+msgstr "> &#8220;%s&#8221;"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:796
+msgid "Importing post ID conflicts with an existing post ID"
+msgstr "Importieren von Post-ID-Konflikte mit einer bestehenden Post-ID"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:797
+#, php-format
+msgid "> &#8220;%s&#8221; ID already exists."
+msgstr "> &#8220;%s&#8221; ID ist bereits vorhanden."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:805
+msgid "Post is not a product"
+msgstr "Post ist kein Produkt"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:806
+#, php-format
+msgid "> &#8220;%s&#8221; is not a product."
+msgstr "> &#8220;%s&#8221; ist kein Produkt."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:816
+#, php-format
+msgid "> Merging post ID %s."
+msgstr "> Merging Post ID%s."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:879
+msgid "Failed to update product"
+msgstr "Fehlgeschlagen Produkt zu aktualisieren"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:880
+#, php-format
+msgid "> Failed to update product %s"
+msgstr "> Fehlgeschlagen Produkt zu aktualisieren %s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:884
+msgid "> Merged post data: "
+msgstr "> Zusammengeführt Post Daten:"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:913
+#, php-format
+msgid "> Inserting %s"
+msgstr "> Einfügen %s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:936
+msgid "Failed to import product"
+msgstr "Fehlgeschlagen Produkt zu importieren"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:937
+#, php-format
+msgid "Failed to import product &#8220;%s&#8221;"
+msgstr "Fehlgeschlagen Produkt zu importieren &#8220;%s&#8221;"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:943
+#, php-format
+msgid "> Inserted - post ID is %s."
+msgstr "> Eingefügt - Post ID ist %s."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1041
+#, php-format
+msgid "> > Image exists - skipping %s"
+msgstr ">> Bild existiert -Überspringen %s "
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1071
+#, php-format
+msgid "> > Importing image \"%s\""
+msgstr ">> Importieren von Bild  \"%s\""
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1086
+#, php-format
+msgid "> > Imported image \"%s\""
+msgstr ">> Importierte Bild  \"%s\""
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1101
+#, php-format
+msgid "> > Error importing image \"%s\""
+msgstr "> > Fehler beim Importieren der Bild  \"%s\" "
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1108
+msgid "> > Images set"
+msgstr ">> Bilder eingestellt"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1161
+#, php-format
+msgid "> Finished merging post ID %s."
+msgstr "> Fertig Verschmelzung post ID %s."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1164
+#, php-format
+msgid "> Finished importing post ID %s."
+msgstr "> Fertige Import post ID %s."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1229
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1253
+msgid "Invalid file type"
+msgstr "ungültiger Dateityp"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1236
+msgid "Local image did not exist!"
+msgstr "Lokale Bild gab es nicht!"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1266
+#, php-format
+msgid "> > Inserted image attachment \"%s\""
+msgstr "> >Eingefügt Bildanhang \"%s\""
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1331
+msgid "Zero size file downloaded"
+msgstr "Größe Null-Datei heruntergeladen"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1450
+msgid "Import"
+msgstr "Einführen"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/class-wf-prodimpexpcsv-product-import.php:1450
+msgid "Merge Coupons"
+msgstr "Merge Produkte"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:20
+msgid ""
+"You can import coupons (in CSV format) in to the shop using any of below "
+"methods."
+msgstr ""
+"Sie können Produkte importieren (im CSV-Format) in den Laden alle unten "
+"Methoden."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:23
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+"Bevor Sie Ihre Importdatei hochladen können, müssen Sie den folgenden Fehler "
+"zu beheben:"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:31
+msgid "Method 1: Select a file from your computer"
+msgstr "Methode 1: Wählen Sie eine Datei von Ihrem Computer"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:37
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Maximale Größe: %s"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:46
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:166
+msgid "Select a mapping file."
+msgstr "Wählen Sie eine Zuordnungsdatei ."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:61
+msgid "Method 2: Provide FTP Details:"
+msgstr "Methode 2: Geben Sie FTP-Details:"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:67
+msgid "Enable FTP import/export"
+msgstr "Aktiviert den FTP Import / Export"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:75
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:50
+msgid "FTP Server Host/IP"
+msgstr "FTP Server Host / IP"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:78
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:53
+msgid "XXX.XXX.XXX.XXX"
+msgstr "XXX.XXX.XXX.XXX"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:83
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:58
+msgid "FTP User Name"
+msgstr "FTP Benutzername"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:91
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:66
+msgid "FTP Password"
+msgstr "FTP Passwort"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:99
+msgid "FTP Server Path"
+msgstr "FTP Server Path"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:108
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:74
+msgid "Use FTPS"
+msgstr "Verwenden Sie FTPS"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:118
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:36
+msgid "Delimiter"
+msgstr "Delimiter"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:122
+msgid "Merge empty cells"
+msgstr "Merge leere Zellen"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-greeting.php:123
+msgid ""
+"Check this box to merge empty cells - otherwise (when merging) the empty "
+"cells will be ignored when importing things such as attributes."
+msgstr ""
+"Markieren Sie dieses Feld leer Zellen zu verschmelzen - sonst (bei "
+"Verschmelzung) werden die leeren Zellen ignoriert werden, wenn Dinge wie "
+"Attribute zu importieren."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:7
+msgid "Map Fields"
+msgstr "Karte Felder"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:9
+msgid "Mapping file name:"
+msgstr "Mapping Dateiname :"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:13
+msgid "Here you can map your imported columns to product data fields."
+msgstr ""
+"Hier können Sie Ihre importierten Spalten zur Produktdatenfelder zuordnen."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:17
+msgid "Map to"
+msgstr "Karte zu"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:18
+msgid "Column Header"
+msgstr "Spaltenüberschrift"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:19
+msgid "Evaluation Field"
+msgstr "Auswertefeld"
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:21
+msgid ""
+"Assign constant value HikeFoce to post_author:</br>=HikeFoce</br>Add $5 to "
+"Price:sale_price:</br>+5</br>Reduce $5 to Price:sale_price:</br>-5</"
+"br>Multiple 1.05 to Price:sale_price:</br>*1.05</br>Divide Price:sale_price "
+"by 2:</br>/2</br>Append a value By HikeFoce to post_title:</br>&By HikeFoce</"
+"br>Prepend a value HikeFoce to post_title:</br>&HikeFoce [VAL]."
+msgstr ""
+"konstanten Wert Wanderung zum post_author Zwangs zuordnen: </br>=HikeFoce</"
+"br>Fügen Sie $5 bis Preis: sale_price:</br>+5</br>Reduzieren Sie $5 bis "
+"Preis: sale_price:</br>-5</br>Multiple 1.05 bis Preis: sale_price:</"
+"br>*1.05</br>Teilen Sie Preis: sale_price durch2:</br>/2</br>Fügen Sie einen "
+"Wert von By HikeFoce to post_title:</br>&By HikeFoce</br>Prepend Wert "
+"HikeFoce to post_title:</br>&HikeFoce [VAL]."
+
+#: product-csv-import-export-for-woocommerce/includes/importer/views/html-wf-import-options.php:121
+msgid "Do not import"
+msgstr "Nicht importieren"
+
+#: product-csv-import-export-for-woocommerce/includes/views/html-wf-admin-screen.php:4
+msgid "Product Import / Export"
+msgstr "Produkt Import / Export"
+
+#: product-csv-import-export-for-woocommerce/includes/views/html-wf-admin-screen.php:5
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: product-csv-import-export-for-woocommerce/includes/views/html-wf-getting-started.php:3
+msgid ""
+"<strong>Product CSV Import Export</strong> &#8211; Before getting started "
+"prepare your CSV files"
+msgstr ""
+"<strong>Produkt CSV Import Export</strong> &#8211; Bevor Sie beginnen Ihre "
+"CSV Dateien vorbereiten"
+
+#: product-csv-import-export-for-woocommerce/includes/views/html-wf-getting-started.php:4
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: product-csv-import-export-for-woocommerce/includes/views/html-wf-getting-started.php:4
+msgid "Sample CSV"
+msgstr "Beispiel CSV"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:2
+msgid "Export Product in CSV Format:"
+msgstr "Export Produkt im CSV Format:"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:3
+msgid ""
+"Export and download your coupons in CSV format. This file can be used to "
+"import coupons back into your Woocommerce shop."
+msgstr ""
+"Export und Ihre Produkte im CSV Format herunterladen. Diese Datei kann "
+"Produkte verwendet werden, wieder in Ihr WooCommerce Geschäft zu importieren."
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:9
+msgid "Offset"
+msgstr "ausgleichen"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:12
+msgid "0"
+msgstr "0"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:13
+msgid "The number of coupons to skip before returning."
+msgstr "Die Anzahl der Produkte zu überspringen vor der Rückkehr."
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:18
+msgid "Limit"
+msgstr "Grenze"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:21
+msgid "Unlimited"
+msgstr "Unbegrenzt"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:22
+msgid "The number of coupons to return."
+msgstr "Die Anzahl der Produkte zurück."
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:27
+msgid "Sort Columns"
+msgstr "Spalten sortieren"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:30
+msgid "post_parent , ID"
+msgstr "post_parent , ID"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:31
+msgid ""
+"What columns to sort pages by, comma-separated. Accepts post_author , "
+"post_date , post_title, post_name, post_modified, menu_order, "
+"post_modified_gmt , rand , comment_count."
+msgstr ""
+"Welche Spalten Seiten zu sortieren, comma-getrennt. akzeptiert post_author , "
+"post_date , post_title, post_name, post_modified, menu_order, "
+"post_modified_gmt , rand , comment_count."
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:39
+msgid ","
+msgstr ","
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:40
+msgid "Column seperator for exported file"
+msgstr "Spaltentrennzeichen für exportierte Datei"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:45
+msgid "Columns"
+msgstr "Spalten"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:49
+msgid "Column"
+msgstr "Spalte"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:52
+msgid "Column Name"
+msgstr "Spaltenname"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:89
+msgid "Include hidden meta data"
+msgstr "Versteckte Metadaten"
+
+#: product-csv-import-export-for-woocommerce/includes/views/export/html-wf-export-coupons.php:96
+msgid "Export Coupons"
+msgstr "Export Produkte"
+
+#: product-csv-import-export-for-woocommerce/includes/views/import/html-wf-import-coupons.php:2
+msgid "Import Coupons in CSV Format:"
+msgstr "Import Produkte im CSV Format:"
+
+#: product-csv-import-export-for-woocommerce/includes/views/import/html-wf-import-coupons.php:3
+msgid ""
+"Import coupons in CSV format ( works for simple, grouped, external and "
+"variable coupons)  from different sources (  from your computer OR from "
+"another server via FTP )"
+msgstr ""
+"Import Produkte im CSV Format (funktioniert nach einfachen, gruppiert, "
+"externe und variable Produkte) aus verschiedenen Quellen (von Ihrem Computer "
+"oder von einem anderen Server via FTP)"
+
+#: product-csv-import-export-for-woocommerce/includes/views/import/html-wf-import-coupons.php:9
+msgid "Import Coupons"
+msgstr "Produkte importieren"
+
+#: product-csv-import-export-for-woocommerce/includes/views/import/html-wf-import-coupons.php:11
+msgid "Merge coupons if exists"
+msgstr "Merge Produkte wenn vorhanden"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:21
+#, php-format
+msgid "The next export is scheduled on <code>%s</code>"
+msgstr "Der nächste export  wird voraussichtlich am <code>%s</code>"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:23
+msgid "There is no export scheduled."
+msgstr "Es findet kein Export geplant."
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:26
+#, php-format
+msgid "The next import is scheduled on <code>%s</code>"
+msgstr "Der nächste Import wird voraussichtlich am <code>%s</code>"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:28
+msgid "There is no import scheduled."
+msgstr "Es gibt keine Import geplant."
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:37
+msgid "FTP Settings for Export"
+msgstr "FTP Einstellungen für den Export"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:42
+msgid "Enable FTP"
+msgstr "Aktivieren FTP"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:85
+msgid "Automatically Export Coupons"
+msgstr "Automatisch Export Produkte"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:89
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:126
+msgid "Disabled"
+msgstr "Behindert"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:90
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:127
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:97
+msgid "Export Start Time"
+msgstr "Export Startzeit"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:101
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:138
+#, php-format
+msgid "Local time is <code>%s</code>."
+msgstr "Ortszeit ist <code>%s</code>."
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:103
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:140
+msgid "<code>Enter like 6:18pm or 12:27am</code>"
+msgstr "<code> Geben Sie wie 6:18pm or 12:27am</code>"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:108
+msgid "Export Interval [ Minutes ]"
+msgstr "Export-Intervall [Minuten]"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:122
+msgid "Automatically Import Coupons"
+msgstr "Automatische Produkte importieren"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:134
+msgid "Import Start Time"
+msgstr "Import Startzeit"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:145
+msgid "Import Interval [ Minutes ]"
+msgstr "Import-Intervall [Minuten]"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:153
+msgid "Merge Coupons if exist"
+msgstr "Merge Produkte, wenn vorhanden"
+
+#: product-csv-import-export-for-woocommerce/includes/views/settings/html-wf-settings-coupons.php:185
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
