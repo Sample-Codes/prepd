@@ -1,0 +1,15 @@
+[11-Jun-2016 09:13:53 America/Denver] PHP Fatal error:  Call to undefined function is_admin() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/goodlayers-importer.php on line 6
+[11-Jun-2016 09:13:59 America/Denver] PHP Fatal error:  Call to undefined function add_action() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/layerslider.php on line 19
+[11-Jun-2016 09:14:02 America/Denver] PHP Fatal error:  Call to undefined function add_theme_support() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/woocommerce.php on line 6
+[11-Jun-2016 09:14:03 America/Denver] PHP Fatal error:  Call to undefined function add_shortcode() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/wpml.php on line 37
+[11-Jun-2016 09:14:04 America/Denver] PHP Fatal error:  Call to undefined function add_filter() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/masterslider.php on line 7
+[26-Jul-2016 19:58:53 America/Denver] PHP Fatal error:  Call to undefined function is_admin() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/goodlayers-importer.php on line 6
+[26-Jul-2016 20:01:59 America/Denver] PHP Fatal error:  Call to undefined function add_action() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/layerslider.php on line 19
+[26-Jul-2016 20:02:12 America/Denver] PHP Fatal error:  Call to undefined function add_theme_support() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/woocommerce.php on line 6
+[26-Jul-2016 20:02:14 America/Denver] PHP Fatal error:  Call to undefined function add_shortcode() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/wpml.php on line 37
+[26-Jul-2016 20:02:15 America/Denver] PHP Fatal error:  Call to undefined function add_filter() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/masterslider.php on line 7
+[07-Oct-2016 13:58:12 America/Denver] PHP Fatal error:  Call to undefined function add_action() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/layerslider.php on line 19
+[07-Oct-2016 13:58:37 America/Denver] PHP Fatal error:  Call to undefined function add_theme_support() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/woocommerce.php on line 6
+[07-Oct-2016 13:58:39 America/Denver] PHP Fatal error:  Call to undefined function add_shortcode() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/wpml.php on line 37
+[07-Oct-2016 13:58:42 America/Denver] PHP Fatal error:  Call to undefined function add_filter() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/masterslider.php on line 7
+[07-Oct-2016 13:59:46 America/Denver] PHP Fatal error:  Call to undefined function is_admin() in /home2/myprepdm/public_html/wp-content/themes/versatile-v1-14/plugins/goodlayers-importer.php on line 6
