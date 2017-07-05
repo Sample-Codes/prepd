@@ -11,9 +11,23 @@
 
 get_header(); ?>
 
- <div class="slide-image-section">
-          <a href="https://www.myprepdmeals.com/meal-plans/"><img src="http://www.myprepdmeals.com/wp-content/uploads/2015/07/thinner-slider-large.jpg"></a>
-        </div>
+<?php 
+
+$id = get_the_ID();
+$top_banner = get_field("top_banner", $id);
+$banner_link = get_field('top_banner_link');
+
+var_dump($top_banner);
+var_dump($banner_link);
+var_dump($id);
+
+echo '<div class="slide-image-section">';
+echo $banner_link ? '<a href="' . $banner_link . '">' : '';
+echo '<img src="' . $top_banner['url'] . '">';
+echo $banner_link ? '</a>' : '';
+echo '</div>';
+
+?>
 
     <div class="clear"></div>
 

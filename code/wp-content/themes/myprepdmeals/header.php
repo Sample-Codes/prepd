@@ -71,6 +71,3 @@
       </div>  
     </nav>
     <!-- End Navigation -->
-
-    <!-- ============= Slider Section ============= -->
-    <div class="slider-section">

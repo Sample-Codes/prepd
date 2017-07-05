@@ -166,7 +166,7 @@ if ( ! function_exists( 'twentysixteen_excerpt' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'twentysixteen_excerpt_more' ) && ! is_admin() ) :
+// if ( ! function_exists( 'twentysixteen_excerpt_more' ) && ! is_admin() ) :
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with ... and
  * a 'Continue reading' link.
@@ -177,16 +177,16 @@ if ( ! function_exists( 'twentysixteen_excerpt_more' ) && ! is_admin() ) :
  *
  * @return string 'Continue reading' link prepended with an ellipsis.
  */
-function twentysixteen_excerpt_more() {
-	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ), get_the_title( get_the_ID() ) )
-	);
-	return ' &hellip; ' . $link;
-}
-add_filter( 'excerpt_more', 'twentysixteen_excerpt_more' );
-endif;
+// function twentysixteen_excerpt_more() {
+// 	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+// 		esc_url( get_permalink( get_the_ID() ) ),
+// 		/* translators: %s: Name of current post */
+// 		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ), get_the_title( get_the_ID() ) )
+// 	);
+// 	return ' &hellip; ' . $link;
+// }
+// add_filter( 'excerpt_more', 'twentysixteen_excerpt_more' );
+// endif;
 
 if ( ! function_exists( 'twentysixteen_categorized_blog' ) ) :
 /**
