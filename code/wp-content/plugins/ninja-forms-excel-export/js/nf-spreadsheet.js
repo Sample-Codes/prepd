@@ -1,3 +1,58 @@
+var nf_excelexport = nf_excelexport || {};
+
+
+nf_excelexport.serialize_export_fields = function(){
+    var $ = jQuery;
+    var html_ids = $( '#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table tbody' ).sortable( "toArray");
+    console.log(html_ids);
+    var fields = [];
+    for (var i = 0; i < html_ids.length; i++) {
+        var $field = $('#'+html_ids[i]);
+        var field_key = $field.data('key');
+        var checked = $field.find('input[type="checkbox"]').prop('checked');
+        fields.push({
+            'field_key' : field_key,
+            'checked' : (checked?1:0)
+        });
+    }
+    console.log(fields);
+    $.post(
+    	ajaxurl, 
+    	{ 
+    		action : 'nf_spreadsheet_save_field_settings', 
+    		form_id : $('#spreadsheet_export_form_id').val(),
+    		field_settings : fields
+    	}
+	);
+}
+
+
+nf_excelexport.spreadsheet_iteration = function(formData){
+	var $ = jQuery;
+	
+	formData['action'] = 'nf_spreadsheet_export';
+
+	$.post(ajaxurl, formData, function(data) {	
+		data = JSON.parse(data);	
+		// console.log(data); 
+		if( data.iteration < data.num_iterations-2 ){
+			formData['spreadsheet_export_iteration'] = (data.iteration+1);
+			nf_excelexport.spreadsheet_iteration(formData);
+			$('.spreadsheet-export-progress .percent').text( Math.floor((data.iteration+1)/data.num_iterations*100) + ' %' );
+			$('.spreadsheet-export-progress progress').val( Math.floor((data.iteration+1)/data.num_iterations*100) );
+		}else{
+			$('#spreadsheet_export_iteration').val( data.iteration+1 );
+			$('#nf_spreadsheet_export_form input[name],select').prop('disabled',false);
+			$('#nf_spreadsheet_export_form .postbox').removeClass('exporting');
+			$('.spreadsheet-export-progress .percent').text( '100 %' );
+			$('.spreadsheet-export-progress progress').val( 100 );
+			$('#ninja_forms_spreadsheet_submit').removeClass('disabled');
+			$('#nf_spreadsheet_export_form').submit();
+		}
+	});
+}
+
+
 jQuery(document).ready(function($) {
 	$('#spreadsheet_export_begin_date,#spreadsheet_export_end_date').datepicker( {
 		dateFormat: "yy-mm-dd"
@@ -14,6 +69,13 @@ jQuery(document).ready(function($) {
 			$( '#ninja_forms_metabox_spreadsheet_export_fields_settings' ).replaceWith( 
 				$($.parseHTML(data)).find("#ninja_forms_metabox_spreadsheet_export_fields_settings")
 			);
+			$( '#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table tbody' ).sortable({
+				stop: function( event, ui ) {
+				    nf_excelexport.serialize_export_fields();
+				}});
+			$('#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table tbody input[type="checkbox"]').change(function(){
+				nf_excelexport.serialize_export_fields();
+			})
 			$('#ninja_forms_spreadsheet_submit').removeClass('disabled');
 		});
 		
@@ -44,33 +106,12 @@ jQuery(document).ready(function($) {
 				
 			});
 
-			haet_export_spreadsheet_iteration(formData);
+			nf_excelexport.spreadsheet_iteration(formData);
 		}
 		return false;
 	});
+
+
+	$( '#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table' ).sortable();
 });
 
-function haet_export_spreadsheet_iteration(formData){
-	var $ = jQuery;
-	
-	formData['action'] = 'nf_spreadsheet_export';
-
-	$.post(ajaxurl, formData, function(data) {	
-		data = JSON.parse(data);	
-		// console.log(data); 
-		if( data.iteration < data.num_iterations-2 ){
-			formData['spreadsheet_export_iteration'] = (data.iteration+1);
-			haet_export_spreadsheet_iteration(formData);
-			$('.spreadsheet-export-progress .percent').text( Math.floor((data.iteration+1)/data.num_iterations*100) + ' %' );
-			$('.spreadsheet-export-progress progress').val( Math.floor((data.iteration+1)/data.num_iterations*100) );
-		}else{
-			$('#spreadsheet_export_iteration').val( data.iteration+1 );
-			$('#nf_spreadsheet_export_form input[name],select').prop('disabled',false);
-			$('#nf_spreadsheet_export_form .postbox').removeClass('exporting');
-			$('.spreadsheet-export-progress .percent').text( '100 %' );
-			$('.spreadsheet-export-progress progress').val( 100 );
-			$('#ninja_forms_spreadsheet_submit').removeClass('disabled');
-			$('#nf_spreadsheet_export_form').submit();
-		}
-	});
-}

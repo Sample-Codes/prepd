@@ -2,8 +2,8 @@
 Contributors: davidhme, fatcatapps
 Tags: form, forms, zapier
 Requires at least: 3.3
-Tested up to: 4.4.2
-Stable tag: 3.0.1
+Tested up to: 4.7.4
+Stable tag: 3.0.5
 
 License: GPLv2 or later
 
@@ -18,6 +18,21 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 3.0.5 (2 May 2017 ) =
+* Remove hidden field types from Zapier submissions
+
+= 3.0.4 (28 March 2017 ) =
+* Fix license numbering
+
+= 3.0.3 (24 March 2017 ) =
+* Fixed fields with the same name not being sent to Zapier.
+* Removed Zapier test sync on form save.  To test your connection with Zapier, submit a preview form.
+
+= 3.0.2 (29 November 2016 ) =
+
+* Added sequence number
+* Fixed issue with File Uploads addon - uploaded file URLs will now display in Zapier
 
 = 3.0.1 (06 September 2016 ) =
 

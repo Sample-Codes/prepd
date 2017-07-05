@@ -4,7 +4,7 @@
  * Plugin Name: Ninja Forms - Zapier
  * Plugin URI: http://ninjaforms.com/downloads/zapier
  * Description: Integrates Ninja Forms with Zapier.
- * Version: 3.0.1
+ * Version: 3.0.5
  * Author: Fatcat Apps
  * Author URI: http://fatcatapps.com
  * Text Domain: zapier
@@ -23,7 +23,7 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
      */
     final class NF_Zapier
     {
-        const VERSION = '3.0.1';
+        const VERSION = '3.0.5';
         const SLUG    = 'zapier';
         const NAME    = 'Zapier';
         const AUTHOR  = 'Fatcat Apps';
@@ -140,12 +140,6 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
         return NF_Zapier::instance();
     }
 	
-	add_action( 'nf_admin_enqueue_scripts', 'ninja_forms_zapier_enqueue' );
-	
-	function ninja_forms_zapier_enqueue () {
-		wp_enqueue_script( 'zapier-success', plugins_url('includes/zapier-success.js', __FILE__) );
-	}
-
 	function ninja_forms_zapier_activation() {
 	  wp_schedule_event( time(), 'hourly', 'ninja_forms_zapier_cron_hourly' );
 	}
@@ -261,10 +255,6 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
 	 */
 	function ninja_forms_zapier_post_to_webhook($url, $fields) {
 	
-		if ( array_key_exists ( 'Submit', $fields ) ) {
-			unset( $fields['Submit'] );
-		}		
-		
 		// Headers
 		$headers = array(
 			'Accept: application/json',
@@ -272,16 +262,16 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
 		);
 
 		$response = wp_remote_post(
-				$url, array(
-			'method' => 'POST',
-			'timeout' => 45,
-			'redirection' => 5,
-			'httpversion' => '1.0',
-			'blocking' => true,
-			'headers' => $headers,
-			'body' => $fields,
-			'cookies' => array()
-				)
+			$url, array(
+				'method' => 'POST',
+				'timeout' => 45,
+				'redirection' => 5,
+				'httpversion' => '1.0',
+				'blocking' => true,
+				'headers' => $headers,
+				'body' => $fields,
+				'cookies' => array()
+			)
 		);
 
 		// Cache request if failed
@@ -292,46 +282,6 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) ||
 			return true;
 		}
 	}
-	
-	//-----------------------------------------------------------------------------
-	/**
-	 * Does a test sync to zapier with dummy data based on fields present 
-	 * 
-	 */
-	 
-	function do_zapier_test_sync ( $url, $fields ) {
-		// Extract form fields and populate with dummy data
-		$zapier_fields = array(
-		  'Date' => date('Y-m-d H:i:s')
-		);
-		
-		$defaults = array(
-			'textbox' => __('Hello', 'zapier'),
-			'textarea' => __('I just wanted to say hi =)', 'zapier'),
-			'checkbox' => 'checked',
-			'email' => __('test@test.com', 'zapier'),
-			'address' => __('1234 Fakestreet', 'zapier'),
-			'city' => __('Springfield', 'zapier'),
-			'firstname' => __('Jeff', 'zapier'),
-			'lastname' => __('Fakeperson', 'zapier'),
-			'liststate' => __('CA', 'zapier'),
-			'zip' => __('99999', 'zapier'),
-			'listcountry' => __('US', 'zapier'),
-			'phone' => __('555-555-5555', 'zapier'),
-
-		);
-
-		forEach ($fields as $field) {
-			if ( array_key_exists( $field['type'], $defaults ) ) {
-				$zapier_fields[$field['label']] = $defaults[$field['type']];
-			} else {
-				$zapier_fields[$field['label']] = 'test';
-			}
-		}
-		
-		return ninja_forms_zapier_post_to_webhook($url, $zapier_fields);
-
-	}	
 	
 	NF_Zapier();
 }

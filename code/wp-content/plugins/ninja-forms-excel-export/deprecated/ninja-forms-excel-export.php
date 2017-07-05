@@ -1,16 +1,4 @@
 <?php
-/*
-Plugin Name: Ninja Forms - Excel Export
-Plugin URI:  http://haet.at/
-Description: Export Ninja Forms submissions to Excel file
-Version: 1.6
-Author: Hannes Etzelstorfer
-Author URI: http://etzelstorfer.com
-License: GPLv2 or later
-*/
-
-/*  Copyright 2015 Hannes Etzelstorfer (email : hannes@etzelstorfer.com) */
-
 
 define( 'HAET_NINJAFORMSSPREADSHEET_PATH', plugin_dir_path(__FILE__) );
 define( 'HAET_NINJAFORMSSPREADSHEET_URL', plugin_dir_url(__FILE__) );
@@ -34,7 +22,7 @@ if (isset($wp_ninjaformsspreadsheet)) {
 
 function nf_spreadsheet_setup_license() {
 	if ( class_exists( 'NF_Extension_Updater' ) ) {
-        $NF_Extension_Updater = new NF_Extension_Updater( 'Excel Export', '1.0', 'Hannes Etzelstorfer', __FILE__ );
+        $NF_Extension_Updater = new NF_Extension_Updater( 'Excel Export', '3.1', 'Hannes Etzelstorfer', __FILE__ );
 	}
 }
 

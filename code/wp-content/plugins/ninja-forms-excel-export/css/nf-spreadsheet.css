@@ -18,7 +18,25 @@
 }
 
 #ninja_forms_metabox_spreadsheet_export_fields_settings .form-table th {
-    padding:5px 10px;
+    padding:5px 0 5px 10px;
+}
+
+#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table .dashicons{
+    display: block;
+    height: 40px;
+    width: 20px;
+    margin-right: 10px;
+    float: left;
+    font-size: 20px;
+    color: #999;
+    line-height: 1.9;
+    cursor: ns-resize;
+}
+
+#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table .ui-sortable-handle th,
+#ninja_forms_metabox_spreadsheet_export_fields_settings .form-table .ui-sortable-handle td{
+    border-top: 2px solid #f1f1f1;
+    border-bottom: 2px solid #f1f1f1;
 }
 
 #ninja_forms_metabox_spreadsheet_export_submit_settings {

@@ -28,9 +28,9 @@
 
                             <?php if( 'prompt' == $setting[ 'type' ] ) continue; ?>
 
-                            <tr id="row_<?php echo $setting[ 'id' ]; ?>">
+                            <tr id="<?php echo ( isset( $setting['key'] ) ? 'row_spreadsheet_export_'.$setting['key'] : 'row_'.$setting['id'] ); ?>" data-key="<?php echo ( isset( $setting['key'] ) ? $setting[ 'key' ]:''); ?>">
                                 <th scope="row">
-                                    <label for="<?php echo $setting[ 'id' ]; ?>"><?php echo $setting[ 'label' ]; ?></label>
+                                    <label for="<?php echo ( isset( $setting['key'] ) ? 'spreadsheet_export_field_'.$setting['key'] : $setting['id'] ); ?>"><?php echo $setting[ 'label' ]; ?></label>
                                 </th>
                                 <td>
                                     <?php
@@ -42,15 +42,15 @@
                                             echo $setting[ 'value' ];
                                             break;
                                         case 'textbox' :
-                                            echo "<input type='text' class='code widefat' name='{$setting['id']}' id='{$setting['id']}' value='{$setting['value']}'>";
+                                            echo "<input type='text' class='code widefat' name='{$setting['id']}' id='" . ( isset( $setting['key'] ) ? 'spreadsheet_export_field_'.$setting['key'] : $setting['id'] ) . "' value='{$setting['value']}'>";
                                             break;
                                         case 'checkbox' :
                                             $checked = ( $setting[ 'value' ] ) ? 'checked' : '';
                                             echo "<input type='hidden' name='{$setting['id']}' value='0'>";
-                                            echo "<input type='checkbox' name='{$setting['id']}' value='1' id='{$setting['id']}' class='widefat' $checked>";
+                                            echo "<input type='checkbox' name='{$setting['id']}' value='1' id='" . ( isset( $setting['key'] ) ? 'spreadsheet_export_field_'.$setting['key'] : $setting['id'] ) . "' class='widefat' $checked>";
                                             break;
                                         case 'select' :
-                                            echo "<select name='{$setting['id']}' id='{$setting['id']}'>";
+                                            echo "<select name='{$setting['id']}' id='" . ( isset( $setting['key'] ) ? 'spreadsheet_export_field_'.$setting['key'] : $setting['id'] ) . "'>";
                                             foreach( $setting['options'] as $option ) {
                                                 $selected = ( $setting['value'] == $option['value'] ) ? 'selected="selected"' : '';
                                                 echo "<option value='{$option['value']}' {$selected}>{$option['label']}</option>";
@@ -71,8 +71,8 @@
                                     ?>
                                 </td>
                             </tr>
-                            </tbody>
                             <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>

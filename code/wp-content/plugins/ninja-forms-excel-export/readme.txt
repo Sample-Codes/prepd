@@ -2,8 +2,8 @@
 Contributors: haet
 Tags: ninjaforms, excel, form, export, spreadsheet
 Requires at least: 3.3
-Tested up to: 4.7
-Stable tag: 3.0.1
+Tested up to: 4.7.2
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,12 @@ Ninja Forms Spreadsheet Export has two features to bypass these problems
 2. Activate the plugin through the \'Plugins\' menu in WordPress
 
 == Changelog ==
+
+= 3.1 =
+* made fields sortable
+* save field settings
+* fixed error if Ninja Forms is disabled
+* use admin labels if available
 
 
 = 3.0.1 =

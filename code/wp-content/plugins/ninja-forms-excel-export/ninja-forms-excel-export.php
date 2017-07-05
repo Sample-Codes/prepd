@@ -4,7 +4,7 @@
  * Plugin Name: Ninja Forms - Excel Export
  * Plugin URI: http://etzelstorfer.com/en/
  * Description: Export Ninja Forms submissions to Excel file
- * Version: 3.0.1
+ * Version: 3.1
  * Author: Hannes Etzelstorfer
  * Author URI: http://etzelstorfer.com/en/
  * Text Domain: ninja-forms-excel-export
@@ -23,7 +23,7 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
      */
     final class NF_ExcelExport
     {
-        const VERSION = '3.0.1';
+        const VERSION = '3.1';
         const SLUG    = 'excel-export';
         const NAME    = 'Excel Export';
         const AUTHOR  = 'Hannes Etzelstorfer';
@@ -92,6 +92,7 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
 
             add_action( 'admin_menu', array( $this, 'add_admin_page'));
             add_action( 'wp_ajax_nf_spreadsheet_export', array($this,'export_file') );
+            add_action( 'wp_ajax_nf_spreadsheet_save_field_settings', array($this,'save_field_settings') );
             add_action( 'admin_init', array( $this, 'output_export_file' ));
         }
 
@@ -99,7 +100,8 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
 
 
         public function add_admin_page(){
-            Ninja_Forms()->menus[ 'excel-export' ]         = new NF_ExcelExport_Admin_Menus_ExcelExport();
+            if( function_exists('Ninja_Forms') )
+                Ninja_Forms()->menus[ 'excel-export' ]         = new NF_ExcelExport_Admin_Menus_ExcelExport();
         }
         
 
@@ -122,7 +124,22 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
                 require_once $classes_dir . $class_file;
             }
         }
-        
+
+
+
+
+        public function save_field_settings(){
+            $form_id = $_POST['form_id'];
+            $field_settings = $_POST['field_settings'];
+            $fields_associative = array();
+            foreach ($field_settings as $field) {
+                $fields_associative[ $field['field_key'] ] = $field;
+            }
+
+            update_option( 'nf_excel_field_settings_' . $form_id, $fields_associative );
+            wp_die();
+        }
+                
 
 
 
@@ -162,13 +179,18 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
             $header_row=array();
             $header_row['id'] = __('ID','ninja-forms-spreadsheet');
             $header_row['date_submitted'] = __('Submission date','ninja-forms-spreadsheet');
+            $selected_field_names = array();
             foreach($fields_meta as $field){
                 $field_settings = $field->get_settings();
                 $field_names[$field_settings['key']] = sanitize_title( $field_settings['label'].'-'.$field_settings['key'] );
                 $field_types[$field_settings['key']] = $field_settings['type'];
                 if(in_array($field_settings['key'], $selected_fields)){
-                    $header_row[$field_names[$field_settings['key']]]=$field_settings['label'];
+                    $selected_field_names[$field_settings['key']]=(isset($field_settings['admin_label']) && $field_settings['admin_label'] ? $field_settings['admin_label'] : $field_settings['label']);
                 }
+            }
+
+            foreach ($selected_fields as $key) {
+                $header_row[$key] = $selected_field_names[$key];
             }
             
             
@@ -278,12 +300,13 @@ if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3.0', '<' ) 
                     $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setAutoSize(true);
                 }
 
+                $output_file_name = sanitize_title( Ninja_Forms()->form($form_id)->get()->get_setting( 'title' ) ) . '_' . date('Y-m-d_His');
                 if( $use_xls ){
                     header('Content-Type: application/vnd.ms-excel');
-                    header('Content-Disposition: attachment;filename="form-submissions.xls"');
+                    header('Content-Disposition: attachment;filename="' . $output_file_name . '.xls"');
                 }else{
                     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-                    header('Content-Disposition: attachment;filename="form-submissions.xlsx"');
+                    header('Content-Disposition: attachment;filename="' . $output_file_name . '.xlsx"');
                 }
                 header('Cache-Control: max-age=0');
                 $objWriter->save("php://output");

@@ -25,7 +25,7 @@ final class NF_ExcelExport_Admin_Menus_ExcelExport extends NF_Abstracts_Submenu
 
     public function display()
     {
-        wp_enqueue_script('haet_nf_spreadsheet_js',  NF_ExcelExport::$url.'/js/nf-spreadsheet.js', array( 'jquery','jquery-ui-datepicker'));
+        wp_enqueue_script('haet_nf_spreadsheet_js',  NF_ExcelExport::$url.'/js/nf-spreadsheet.js', array( 'jquery','jquery-ui-sortable','jquery-ui-datepicker'));
 
         wp_enqueue_style( 'haet_nf_spreadsheet_css',  NF_ExcelExport::$url.'/css/nf-spreadsheet.css',array());
 
@@ -105,19 +105,34 @@ final class NF_ExcelExport_Admin_Menus_ExcelExport extends NF_Abstracts_Submenu
                 $current_form_id = $_POST['spreadsheet_export_form_id'];
             $fields = Ninja_Forms()->form($current_form_id)->get_fields();
 
+            $field_order_settings = get_option( 'nf_excel_field_settings_' . $current_form_id );
+            if( ! is_array($field_order_settings) )
+                $field_order_settings = array();
+
             // echo '<pre>'.print_r($fields,true).'</pre>';
             $grouped_settings['spreadsheet_export_fields'] = array();
             foreach($fields as $field){
                 $field_settings = $field->get_settings();
-                // echo '<pre>'.print_r($field_settings,true).'</pre>';
+                //echo '<pre>'.print_r($field_settings,true).'</pre>';
                 if(!in_array( $field_settings['type'], array('submit','hr','html','_page_divider','recaptcha','spam'))){
                     $grouped_settings['spreadsheet_export_fields']['spreadsheet_export_field_'.$field_settings['key']]=array(
                         'id' => 'spreadsheet_export_field_keys['.$field_settings['key'].']',
+                        'key' => $field_settings['key'],
                         'type' => 'checkbox',
-                        'label'=> $field_settings['label'].' <br><span style="font-size:10px;color:#999;text-transform:uppercase;">'.__('Field type','ninja-forms-spreadsheet').':</span> <span style="font-size:11px;">'.str_replace('_', ' ', $field_settings['type']).'</span>',
-                        'value'=>1
+                        'label'=> '<span class="dashicons dashicons-menu"></span>' . (isset($field_settings['admin_label']) && $field_settings['admin_label'] ? $field_settings['admin_label'] : $field_settings['label']).' <br><span style="font-size:10px;color:#999;text-transform:uppercase;">'.__('Field type','ninja-forms-spreadsheet').':</span> <span style="font-size:11px;">'.str_replace('_', ' ', $field_settings['type']).'</span>',
+                        'value'=> ( array_key_exists($field_settings['key'], $field_order_settings) && !$field_order_settings[$field_settings['key']]['checked'] ? 0 : 1 ) 
                     );
                 }
+            }
+            if( is_array($field_order_settings) ){
+                $sorted_fields = array();
+                foreach ($field_order_settings as $field_order_setting) {
+                    if( array_key_exists('spreadsheet_export_field_'.$field_order_setting['field_key'], $grouped_settings['spreadsheet_export_fields'])){
+                        $sorted_fields['spreadsheet_export_field_'.$field_order_setting['field_key']] = $grouped_settings['spreadsheet_export_fields']['spreadsheet_export_field_'.$field_order_setting['field_key']];
+                        unset( $grouped_settings['spreadsheet_export_fields']['spreadsheet_export_field_'.$field_order_setting['field_key']] );
+                    }
+                }
+                $grouped_settings['spreadsheet_export_fields'] = array_merge( $sorted_fields, $grouped_settings['spreadsheet_export_fields'] );
             }
             
             ob_start();
