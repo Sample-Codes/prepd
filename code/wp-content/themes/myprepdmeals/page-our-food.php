@@ -7,6 +7,7 @@ $column_one = get_field('column_one');
 $column_two = get_field('column_two');
 
 echo '<main id="main" class="site-main" role="main">';
+
 echo '<div class="container">';
 echo $intro_content;
 echo '<div class="row leaf-column">';
@@ -24,6 +25,7 @@ echo '</div>';
 echo '</div>'; 
 echo '</div>'; 
 echo '</div>'; 
+
 echo '</main>';
 
 get_footer('plans'); ?>

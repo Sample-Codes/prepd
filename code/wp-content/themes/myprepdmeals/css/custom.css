@@ -618,7 +618,13 @@ box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 .gap-bottom-2{margin: 0px 0px 20px;}
 .gap-top-2{margin: 20px 0px 0px;}
 .team-row{margin: 30px 0px 70px;}
-.weekly-menus{margin: 0px; padding: 20px 0px; background: #8eb07a url(../images/dot-bg.jpg);}
+
+.weekly-menus {
+    margin-bottom: 40px;
+    padding: 40px 0 60px 0;
+    background: #8eb07a url(../images/dot-bg.jpg);
+}
+
 .weekly-menus h2, .weekly-menus p{color: #212121;}
 /*-- End Weekly Menus --*/
 
