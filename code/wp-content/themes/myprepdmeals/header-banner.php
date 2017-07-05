@@ -167,7 +167,8 @@
       
 
     ?>
-    <div style="background-size: cover; padding: 190px 0px 80px;position: relative;text-align: center;line-height: 1;background-image: url(<?php echo $banner_url; ?>);background-repeat: repeat;background-position: center;">
+    <div style="background-size: cover; padding: 190px 0px 80px;position: relative;text-align: center;line-height: 1;background-image: url(<?php echo $banner_url; ?>);background-repeat: repeat;background-position: center;margin-bottom: 60px;
+}">
     <h1 class="text-title-1"><?php the_title(); ?></h1>
     </div>
 
