@@ -1,1 +1,0 @@
-jQuery('.product').removeClass('product');
