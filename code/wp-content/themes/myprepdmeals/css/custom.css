@@ -309,13 +309,18 @@ footer-section .footer-links .nav li {padding-right: 10px !important;}
 .work-section{text-align: center; padding: 50px 0px 50px;}
 .work-section {/*font-size: 34px;*/}
 .pick-plan.parallax-2 {background-image: url(../images/green-beans-faded-more.jpg);}
-.pick-plan.parallax-3 {background-image: url(../images/zucchini-faded.jpg); padding-bottom: 50px;}
-.pick-plan{margin: 0px; padding: 40px 0px 30px;
-background-position: 50% 50%; background-repeat: no-repeat; background-attachment: fixed; 
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+.pick-plan.parallax-3 {padding-bottom: 50px;}
+
+.pick-plan {
+    margin: 0px; 
+    padding: 40px 0px 30px;
+    background-position: 50% 50% !important; 
+    background-repeat: no-repeat !important; 
+    background-attachment: fixed !important; 
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
 }
 
 .pick-plan p{color: #303030;}
@@ -326,6 +331,7 @@ background-size: cover;
 .pick-plan .btn.btn-plan, .pick-meals .btn.btn-plan{margin: 0px; padding: 12px 30px; background: #8eb07a; text-transform: uppercase; color: #ffffff; border-radius: 0px; font-weight: bold; font-size: 13px;}
 .pick-plan .btn.btn-plan:hover, .pick-meals .btn.btn-plan:hover{background: #7aa064; border-radius: 0px;}
 .pick-meals{margin: 0px; padding: 70px 0px 50px; background: #ffffff;}
+.pick-meals img {margin-bottom: 20px;}
 .pick-meals h2{margin-top: 0px;}
 .alignnone{width: 40% !important; height: auto; float: left !important; margin-right: 30px;}
 
