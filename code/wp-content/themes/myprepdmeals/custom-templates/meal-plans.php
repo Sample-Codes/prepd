@@ -3,10 +3,6 @@
  * Template Name: Meal Plans
  *
  */
-$email=$zipcode=$product_url= "";
-$email = $_REQUEST['email'];
-$zipcode = $_REQUEST['zipcode'];
-$product_url= "?email=".$email."&zipcode=".$zipcode;
 
 get_header('banner'); ?>
 
@@ -19,6 +15,7 @@ get_header('banner'); ?>
               <p style="font-family: Nothing You Could Do, cursive; font-size: 20px; text-align:center;"> -price will be reflected depending on selections below- </p>
 
               <?php 
+
                 $args = array('post_type' => 'product','orderby' => 'date','order' => 'DESC',
                   'tax_query' => array(
                       array(
@@ -169,8 +166,6 @@ get_header('banner'); ?>
 <script type="text/javascript">
   jQuery(document).ready(function() {
 
-    email   = "<?php echo $email; ?>";
-    zipcode = "<?php echo $zipcode; ?>";
      //Start : code for snacks and meals plan radio change
     jQuery('input[type=radio][name=standard_snacks_meals_plan]').change(function() {
 
@@ -290,7 +285,7 @@ get_header('banner'); ?>
             snacks_quantity= jQuery('#standard-plan-type').attr( "data-snacks-quantity" );
             url            = jQuery('#standard-plan-type').attr( "data-url" );
             selected_plan_type      = "standard_plan";
-            plan_url = url+"?plan_type="+selected_plan_type+"&plan_id="+post_id+"&email="+email+"&zipcode="+zipcode;
+            plan_url = url+"?plan_type="+selected_plan_type+"&plan_id="+post_id;
 
             //alert(plan_url+"===standard_plan");
           }
@@ -304,7 +299,7 @@ get_header('banner'); ?>
             snacks_quantity= jQuery('#fuel-plan-type').attr( "data-snacks-quantity" );
             url            = jQuery('#fuel-plan-type').attr( "data-url" );
             selected_plan_type      = "fuel_plan";
-            plan_url = url+"?plan_type="+selected_plan_type+"&plan_id="+post_id+"&email="+email+"&zipcode="+zipcode;
+            plan_url = url+"?plan_type="+selected_plan_type+"&plan_id="+post_id;
 
               //alert(plan_url+"===fuel_plan");
           }
