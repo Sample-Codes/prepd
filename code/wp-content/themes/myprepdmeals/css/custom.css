@@ -154,6 +154,10 @@ button.esi-mailchimp-subscribe {
     max-width: 650px;
 }
 
+.txt-aligncenter {
+    text-align: center;
+}
+
 @media (max-width: 540px) {
 
     .esi-mailchimp-subscribe, .esi-slide-minimal .esi-mailchimp-email {
