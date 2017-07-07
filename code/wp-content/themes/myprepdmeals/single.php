@@ -7,12 +7,9 @@
  * @since Myprepdmeals 1.0
  */
 
-get_header('banner'); ?>
+get_header('single-blog-post'); ?>
 
 <div id="primary" class="content-area">
-	<div class="container">
-	<div class="row">
-	<div class="col-sm-9">
 	<div class="blog-individual">
 	<main id="main" class="site-main" role="main">
 		<?php
@@ -23,18 +20,17 @@ get_header('banner'); ?>
 			get_template_part( 'template-parts/content', 'single' );
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) {
-				comments_template();
-			}
+			echo '<div class="container">';
+				if ( comments_open() || get_comments_number() ) {
+					comments_template();
+				}
+			echo '</div>';
 
 			// End of the loop.
 		endwhile;
 		?>
 
 	</main><!-- .site-main -->
-	</div>
-	</div>
-	</div>
 	</div>
 
 </div><!-- .content-area -->

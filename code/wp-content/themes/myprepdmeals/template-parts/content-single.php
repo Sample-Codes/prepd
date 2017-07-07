@@ -10,23 +10,27 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<?php //the_excerpt(); ?>
 
 	<?php 
-		 if( has_post_thumbnail() ) {
-				the_post_thumbnail('full'); 
-		 }else{	
-		 	 echo '<img width="1024" height="683" src="'.get_template_directory_uri().'/images/dummy-img-01.jpg" alt="">';
-		 }
 
-	?>
+	$author = get_the_author();
+	$date = get_the_time('M d Y');
+	$author_bio_avatar_size = apply_filters( 'post-thumbnail', 42 );
+	$author_image = get_avatar( get_the_author_meta( 'user_email' ));
 
-	<div class="entry-content">
+	echo '<div class="blog-info">';
+	echo '<div class="container">';
+	echo '<div class="top-author-info">' . $author_image;
+	echo $author ? '<p>Written By: <br />' . $author . '</p>' : '';
+	echo '<span class="small-date"><i class="fa fa-clock-o"></i>' . $date . '</span>';
+	echo '</div>';
+	echo '</div>';
+	echo '</div>'; ?>
+
+	<div class="entry-content container">
+		
 		<?php
+
 			the_content();
 
 			wp_link_pages( array(
@@ -42,20 +46,9 @@
 				get_template_part( 'template-parts/biography' );
 			}
 		?>
+		
+		<div class="txt-aligncenter"><a href="<?php echo site_url() . '/meal-plans/'?>" class="btn btn-view">Get Prep'd</a></div>
+
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php twentysixteen_entry_meta(); ?>
-		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'myprepdmeals' ),
-					get_the_title()
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-		?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -25,7 +25,7 @@
 	</div><!-- .author-avatar -->
 
 	<div class="author-description">
-		<h2 class="author-title"><span class="author-heading"><?php _e( 'Author:', 'twentysixteen' ); ?></span> <?php echo get_the_author(); ?></h2>
+		<h2 class="author-title"><span class="author-heading"><?php _e( 'Written By:', 'twentysixteen' ); ?></span> <?php echo get_the_author(); ?></h2>
 
 		<p class="author-bio">
 			<?php the_author_meta( 'description' ); ?>
