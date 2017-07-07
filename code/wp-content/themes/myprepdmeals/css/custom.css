@@ -809,6 +809,15 @@ transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
 .full-menu-section .mid-content{text-align: center;}
 .pro-info-sec{margin-bottom: 50px;}
 
+#full-menu-items .meal-cont {
+    display: none;
+    text-align: center;
+}
+
+#full-menu-items .full-menu-nm {
+    padding-top: 10px;
+}
+
 
 .filter-menu ul{text-align: center; margin-bottom: 30px !important;}
 .filter-menu li{display: block; list-style: none; display: inline-block; margin-top: 12px; margin-bottom: 0px; margin-left: 0px; background: #FFF; -moz-border-radius: 4px; border-radius: 4px; padding: 6px 10px 9px; color: #333; text-align: center;}
