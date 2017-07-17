@@ -17,57 +17,48 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
-	<?php endif; ?>
-	<!-- js files -->
-	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.validate.js"></script>
-
-    <link rel="shortcut icon" href="https://www.myprepdmeals.com/favicon.ico" type="image/x-icon" />
-
-     <!-- css files -->
-    <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet">
-
-    <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/animate.css">
-    <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootsnav.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/custom.css">
-    
-	<?php wp_head(); ?>
+  <?php endif; ?>
+	<link rel="shortcut icon" href="https://www.myprepdmeals.com/favicon.ico" type="image/x-icon" />
+  <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
- <!-- ======================= Nav Section ===================== -->
-    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+<div id="page" class="site">
+  <header id="masthead" class="site-header" role="banner">
+      <?php include(get_template_directory() . '/template-parts/main-navigation.php'); ?>
+  </header>
+
+<?php 
+  
+  // page banners  
+  $banner_url = '';
+  $page_title = get_the_title();
+  $banner_image = get_the_post_thumbnail_url();
+  $upload_image = get_field('upload_banner_image');
+  $default_banner = get_field('default_banner', 'option');
+
+  // blog posts
+  if( is_single() ) {
+    $banner_url = $banner_image;
+  }
+
+  // single pages
+  if($upload_image) {
+    $banner_url = $upload_image;
+  } else {
+    $banner_url = $default_banner;
+  }
 
 
-      <div class="container">        
-          <!-- Start Header Navigation -->
+if (!is_front_page() && !is_home()) : 
+  if( is_single() ) {
+    echo '<div class="top-single-banner" style="background-image: url(\'' . $banner_url . '\');"><div class="top-banner-cont"><h1 class="text-title-1">' . $page_title . '</h1></div></div>';
+  } else {
+    echo '<div class="top-banner" style="background-image: url(\'' . $banner_url . '\');">';
+    echo '<h1 class="text-title-1">' . $page_title . '</h1>';
+    echo '</div>';
+  }
 
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                  <i class="fa fa-bars"></i>
-              </button>
-              <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" class="logo logo-display" alt="">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/logo-small.png" class="logo logo-scrolled" alt="">
-              </a>
-          </div>
-          <!-- End Header Navigation -->
+endif;
 
-          <?php
-          if(function_exists('wp_nav_menu')) {
-           wp_nav_menu(array(
-            'theme_location' => 'primary',
-            'menu_class' => 'nav navbar-nav navbar-right',
-            'container' => 'div',
-            'container_class' => 'collapse navbar-collapse',
-            'container_id' => 'navbar-menu',
-            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-            'walker'            => new wp_bootstrap_navwalker()
-
-           )); 
-          }
-         ?>
-      </div>  
-    </nav>
-    <!-- End Navigation -->
+?>

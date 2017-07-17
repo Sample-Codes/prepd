@@ -42,7 +42,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
 .cart-icon .count:hover{color: #000000;}
 /*-- End Bootsnav --*/
 
-.top-banner {
+.top-single-banner {
     position: relative;
     text-align: center;
     line-height: 1;
@@ -52,7 +52,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
     padding-bottom: 60px;
 }
 
-.top-banner .text-title-1 {
+.top-single-banner .text-title-1 {
     font-size: 3.75rem;
     background: rgba(51, 51, 51, 0.5);
     padding: 20px;
@@ -60,8 +60,18 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
     margin: 0 auto;
 }
 
-.top-banner-cont {
+.top-single-banner {
     margin: 20px;
+}
+
+.top-banner {
+    background-size: cover; 
+    padding: 190px 0px 80px;
+    position: relative;
+    text-align: center;
+    line-height: 1;
+    background-repeat: repeat;
+    background-position: center;
 }
 
 .top-author-info img, .author-avatar img {
@@ -92,12 +102,12 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
 
 @media screen and (min-width: 767px) {
   
-    .top-banner {  
+    .top-single-banner {  
         background-size: cover; 
         padding: 200px 0px 200px;
 }
 
-    .top-banner .text-title-1 {
+    .top-single-banner .text-title-1 {
         font-size: 4.75rem;
 }
 }

@@ -7,7 +7,7 @@
  * @since Myprepdmeals 1.0
  */
 
-get_header('single-blog-post'); ?>
+get_header(); ?>
 
 <div id="primary" class="content-area">
 	<div class="blog-individual">

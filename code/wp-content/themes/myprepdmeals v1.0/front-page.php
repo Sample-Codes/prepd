@@ -9,9 +9,7 @@
  *
  */
 
-get_header(); ?>
-
-<?php 
+get_header(); 
 
 $id = get_the_ID();
 $top_banner = get_field('top_banner');

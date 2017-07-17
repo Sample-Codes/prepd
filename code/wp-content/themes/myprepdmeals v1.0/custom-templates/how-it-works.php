@@ -3,7 +3,7 @@
  * Template Name: How It Works
  *
  */
-get_header('banner');
+get_header();
 
 $how_it_works_image = get_field('how_it_works_image');
 $section_one = get_field('content_section_one');

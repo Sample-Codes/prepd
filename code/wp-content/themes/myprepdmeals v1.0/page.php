@@ -14,7 +14,7 @@ $postid = get_the_ID();
 if(in_array($postid,array(6,7))){
 	get_header('plans');
 } else {
-	get_header('banner');
+	get_header();
 }
 
  ?>
