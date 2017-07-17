@@ -17,10 +17,11 @@ function my_custom_add_to_cart_redirect( $url ) {
        $current_url = $_SERVER["REQUEST_URI"];
        $url_arr     = array();
        $url_arr     = explode('?', $current_url);
-       $url_string  = $url_arr[1];
+       if(count($url_arr) > 1 ) {
+        $url_string  = $url_arr[1];
+       }
        $url         = WC()->cart->get_checkout_url();
        $new_url     = $url . "/?" . $url_string;
-        return $new_url;
     // $url = wc_get_checkout_url(); // since WC 2.5.0
 }
 
