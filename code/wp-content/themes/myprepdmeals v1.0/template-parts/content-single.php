@@ -42,12 +42,13 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 
+			echo '<div class="txt-aligncenter"><a href="' . site_url() . '/meal-plans/" class="btn btn-view">Get Prep\'d</a></div>';
+
 			if ( '' !== get_the_author_meta( 'description' ) ) {
 				get_template_part( 'template-parts/biography' );
 			}
 		?>
 		
-		<div class="txt-aligncenter"><a href="<?php echo site_url() . '/meal-plans/'?>" class="btn btn-view">Get Prep'd</a></div>
 
 	</div><!-- .entry-content -->
 

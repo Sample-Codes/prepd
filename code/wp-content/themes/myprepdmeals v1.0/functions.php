@@ -44,6 +44,13 @@ if ( ! function_exists( 'myprepdmeals_setup' ) ) :
  *
  * @since Myprepdmeals 1.0
  */
+
+// adding acf options page
+
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}
+
 function myprepdmeals_setup() {
 	/*
 	 * Make theme available for translation.
@@ -244,6 +251,15 @@ add_action( 'wp_head', 'myprepdmeals_javascript_detection', 0 );
  * @since Myprepdmeals 1.0
  */
 function myprepdmeals_scripts() {
+	wp_enqueue_script( 'myprepdmeals-min-js', get_template_directory_uri() . '/js/jquery.min.js', array(), 'v1.12.4' );
+	wp_enqueue_script( 'myprepdmeals-validate', get_template_directory_uri() . '/js/jquery.validate.js', array(), '' );
+	wp_enqueue_style( 'myprepdmeals-bootcss', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'v3.3.7' );
+	wp_enqueue_style( 'myprepdmeals-animate', get_template_directory_uri() . '/css/animate.css', array(), 'v1.0' );
+	wp_enqueue_style( 'myprepdmeals-bootsnav', get_template_directory_uri() . '/css/bootsnav.css', array(), 'v.1.1' );
+	wp_enqueue_style( 'myprepdmeals-customcss', get_template_directory_uri() . '/css/custom.css', array(), 'v.1.0' );
+	wp_enqueue_style( 'myprepdmeals-owlcss-car', get_template_directory_uri() . '/owl.carousel/owl.carousel.css', array(), 'v.1.0' );
+	wp_enqueue_style( 'myprepdmeals-owlcss', get_template_directory_uri() . '/owl.carousel/owl.theme.default.css', array(), 'v.1.0' );
+
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'myprepdmeals-fonts', myprepdmeals_fonts_url(), array(), null );
 

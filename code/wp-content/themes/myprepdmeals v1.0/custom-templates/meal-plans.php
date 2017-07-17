@@ -16,12 +16,21 @@ get_header('banner'); ?>
 
               <?php 
 
-                $args = array('post_type' => 'product','orderby' => 'date','order' => 'DESC',
+                $fuel_category = get_term_by( 'slug', 'fuel-plan', 'product_cat' );
+                $fuel_cat_id = $fuel_category->term_id;
+
+                $standard_category = get_term_by( 'slug', 'standard-plan', 'product_cat' );
+                $standard_cat_id = $standard_category->term_id;
+
+                $args = array(
+                  'post_type' => 'product',
+                  'orderby' => 'date',
+                  'order' => 'DESC',
                   'tax_query' => array(
                       array(
                           'taxonomy' => 'product_cat',
                           'field' => 'term_id',
-                          'terms' =>  array(87,99),
+                          'terms' =>  array($fuel_cat_id,$standard_cat_id),
                       )
                   ),
                   'meta_query'  => array(
@@ -33,8 +42,6 @@ get_header('banner'); ?>
                );
 
                 $plans = new WP_Query($args);
-
-
 
                 if($plans->have_posts()) {
                   $price=$subscription_period=$meals_quantity=$snacks_quantity=$post_id= "";   
@@ -52,7 +59,7 @@ get_header('banner'); ?>
 
                 <?php
                   if($meals_quantity == 5 && $snacks_quantity == 10){
-                    if(in_array(99, $term_ids)){
+                    if(in_array($standard_cat_id, $term_ids)){
                 ?>
                   <div class="col-sm-4">
                     <div id="plain-bg-<?php echo $post_id; ?>" class="plain-bg leaf-bg">
@@ -64,7 +71,7 @@ get_header('banner'); ?>
                   </div>
                   <?php } ?>
 
-                  <?php if(in_array(87, $term_ids)){ ?>
+                  <?php if(in_array($fuel_cat_id, $term_ids)){ ?>
                       <input type="hidden" id="fuel_snacks_meals_plan_<?php echo $meals_quantity; ?>_<?php echo $snacks_quantity; ?>" name="fuel_snacks_meals_plan_<?php echo $post_id; ?>" value="" data-fuel-post-id="<?php echo $post_id; ?>" data-fuel-price="<?php echo $price; ?>" data-fuel-subscription="<?php echo $subscription_period; ?>" data-fuel-meals-quantity="<?php echo $meals_quantity; ?>" data-fuel-snacks-quantity="<?php echo $snacks_quantity; ?>" data-fuel-plan-url="<?php echo get_permalink($post_id); ?>">
                   <?php } 
                       } 
@@ -72,7 +79,7 @@ get_header('banner'); ?>
 
                  <?php
                   if($meals_quantity == 10 && $snacks_quantity == 10){
-                    if(in_array(99, $term_ids)){
+                    if(in_array($standard_cat_id, $term_ids)){
                 ?>
                   <div class="col-sm-4">
                       <div id="plain-bg-<?php echo $post_id; ?>" class="plain-bg leaf-bg">
@@ -84,7 +91,7 @@ get_header('banner'); ?>
                   </div>
                   <?php } ?>
 
-                  <?php if(in_array(87, $term_ids)){ ?>
+                  <?php if(in_array($fuel_cat_id, $term_ids)){ ?>
                        <input type="hidden" id="fuel_snacks_meals_plan_<?php echo $meals_quantity; ?>_<?php echo $snacks_quantity; ?>" name="fuel_snacks_meals_plan_<?php echo $post_id; ?>" value="" data-fuel-post-id="<?php echo $post_id; ?>" data-fuel-price="<?php echo $price; ?>" data-fuel-subscription="<?php echo $subscription_period; ?>" data-fuel-meals-quantity="<?php echo $meals_quantity; ?>" data-fuel-snacks-quantity="<?php echo $snacks_quantity; ?>" data-fuel-plan-url="<?php echo get_permalink($post_id); ?>">
                   <?php } 
                     }
@@ -93,7 +100,7 @@ get_header('banner'); ?>
 
                 <?php
                   if($meals_quantity == 15 && $snacks_quantity == 10){
-                    if(in_array(99, $term_ids)){
+                    if(in_array($standard_cat_id, $term_ids)){
                 ?>
                   <div class="col-sm-4">
                       <div id="plain-bg-<?php echo $post_id; ?>" class="plain-bg leaf-bg">
@@ -105,7 +112,7 @@ get_header('banner'); ?>
                   </div>
                   <?php } ?>
 
-                  <?php if(in_array(87, $term_ids)){ ?>
+                  <?php if(in_array($fuel_cat_id, $term_ids)){ ?>
                       <input type="hidden" id="fuel_snacks_meals_plan_<?php echo $meals_quantity; ?>_<?php echo $snacks_quantity; ?>" name="fuel_snacks_meals_plan_<?php echo $post_id; ?>" value="" data-fuel-post-id="<?php echo $post_id; ?>" data-fuel-price="<?php echo $price; ?>" data-fuel-subscription="<?php echo $subscription_period; ?>" data-fuel-meals-quantity="<?php echo $meals_quantity; ?>" data-fuel-snacks-quantity="<?php echo $snacks_quantity; ?>" data-fuel-plan-url="<?php echo get_permalink($post_id); ?>">
                   <?php }  
                     } 

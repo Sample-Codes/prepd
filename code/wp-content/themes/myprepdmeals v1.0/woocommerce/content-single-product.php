@@ -457,7 +457,7 @@ jQuery(function(){
                           <form class="controls" id="Filters">
                 <!-- We can add an unlimited number of "filter groups" using the following format: -->
                   <?php 
-                        $meal_taxonomy='meal-category';  
+                        $meal_taxonomy = 'meal-category';  
                         $meal_terms = get_terms($meal_taxonomy,array('orderby' => 'name', 'order' => 'ASC', 'hide_empty' => false)); 
                           echo '<fieldset>';
                               foreach($meal_terms as $meal_term) {  
@@ -477,108 +477,109 @@ jQuery(function(){
               </div>
               </div>
               <!-- end ul nav -->
-              
+
               <div id="Container" class="container">
                 <div class="fail-message"><span>No items were found matching the selected filters</span></div>
                 <div class="col-sm-12 plans-head-gap" id="entrees"><h3>Meals</h3></div>
                 <?php
-                    $meals = new WP_Query( array( 'post_type' => 'meal', 'posts_per_page' => -1, 'post_status' => 'publish', 'meal-category' => 'current week' ) );
-                    if ( $meals->have_posts() ) :
-                      while ( $meals->have_posts() ) : $meals->the_post(); 
-                   ?>
                     
+                    $checkout_meals = get_field('checkout_meals', 'option');
+                      if( $checkout_meals ) :
+                        foreach( $checkout_meals as $post ):
+                          setup_postdata($post);
 
-                    <div class="col-sm-4 col-xs-6 mix <?php echo get_term_slug_by_post_id(get_the_ID(), 'meal-category' ); ?>"><?php $term_slugs = wp_get_post_terms( get_the_ID(), 'meal-category' ); 
-                      foreach( $term_slugs as $term_slug ) {
-                          $all_slugs =  ' '.$term_slug->slug; 
-                      } ?>
+                        echo '<div class="col-sm-4 col-xs-6 mix' . get_term_slug_by_post_id(get_the_ID(), 'meal-category' ) . '">'; 
+                        $term_slugs = wp_get_post_terms( get_the_ID(), 'meal-category' );
+                            
+                            foreach( $term_slugs as $term_slug ) {
+                                $all_slugs =  ' '. $term_slug->slug; 
+                            }
+
+                          $meal_id = get_the_ID();
+                          $meal_thumbnail = get_the_post_thumbnail_url();
+                          $meal_title = get_the_title();
+                          $meal_content = get_the_content();
+                          $meal_second_image = get_the_post_thumbnail_url($meal_id, 'meal-detail-image' );
+
+                          echo '<div class="min-meals-01">';
+                          echo '<div class="quantity-input">';
+                          echo '<input data-product="meal" type="button" id="adds-' . $meal_id . '" value="ADD" class="btn btn-default btn-plus" onclick="add(' . get_the_ID() . ')" data-meal-small-image="' . $meal_thumbnail .  '" data-meal-title="' . $meal_title . '" />';
+                          echo '<input type="text" style="" class="onlyNumber form-control cnt-num pull-left" id="no-of-meals-' . $meal_id . '" value="0" name="no_of_meals" />';
+                          echo '<input data-product="meal" type="button" id="subs-' . $meal_id . '" value="-" class="btn btn-default btn-dash pull-left" style="display:none;" onclick="remove(' . $meal_id . ')"  />';
+                          echo '</div>';
+                          echo '<div class="mid-image">';
+                          echo '<a class="view-meals" data-post-id="' . $meal_id . '" data-post-title="' . $meal_title . '" data-desc=\'' . $meal_content . '\' data-toggle="modal" data-target="#meal-details" data-image="' . $meal_thumbnail . '">';
                      
-                      <div class="min-meals-01">
-                        <div class="quantity-input">
-                        <input data-product="meal" type="button" id="adds-<?php echo get_the_ID(); ?>" value="ADD" class="btn btn-default btn-plus" onclick="add(<?php echo get_the_ID(); ?>)" data-meal-small-image='<?php the_post_thumbnail_url('meal-small-image'); ?>' data-meal-title="<?php echo the_title(); ?>" />&nbsp;
-                        <input type="text" style="" class="onlyNumber form-control cnt-num pull-left" id="no-of-meals-<?php echo get_the_ID(); ?>" value="0" name="no_of_meals" />&nbsp;
-                        <input data-product="meal" type="button" id="subs-<?php echo get_the_ID(); ?>" value="-" class="btn btn-default btn-dash pull-left" style="display:none;" onclick="remove(<?php echo get_the_ID(); ?>)"  />
-                        </div>
-
-                        <div class="mid-image">
-
-                        <a class="view-meals" data-post-id="<?php echo get_the_ID(); ?>" data-post-title="<?php echo the_title(); ?>" data-desc='<?php strip_tags(the_content()); ?>' data-toggle="modal" data-target="#meal-details" data-image="<?php the_post_thumbnail_url( 'meal-detail-image' ); ?>">
-
-                        
-                          <?php
                             if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('meal-image');
-                            }
-                            else {
+                            }  else {
                                 echo '<img width="286px" height="191px" src="' . get_bloginfo( 'stylesheet_directory' ) 
                                     . '/images/dummy-img-01.jpg" />';
                             }
-                            ?>
-                        </a>
-                        </div>
-                        <div class="meals-heading">
 
-                          <a class="view-meals" data-post-id="<?php echo get_the_ID(); ?>" data-post-title="<?php echo the_title(); ?>"  data-toggle="modal" data-target="#meal-details" data-image="<?php the_post_thumbnail_url( 'meal-detail-image' ); ?>" ><p><?php the_title(); ?></p></a>
+                          echo '</a>';
+                          echo '</div>';
+                          echo '<div class="meals-heading">';
+                          echo '<a class="view-meals" data-post-id="' . $meal_id . '" data-post-title="' . $meal_title . '"  data-toggle="modal" data-target="#meal-details" data-image="' . $meal_second_image . '" ><p>' . $meal_title . '</p></a>';
+                          echo '</div>';
+                          echo '</div>';
+                          echo '</div>';
 
-                        </div>
-                      </div>
-                    
-                    </div>
-
-                   
-                  <?php 
-                      endwhile;
-                    endif;
+                        endforeach;
+                      endif;
                   wp_reset_postdata();
                 ?>
                 <div class="clearfix"></div>
+<?php // Snacks ?>  
                 <div class="col-sm-12" id="breakfasts"><h3>Snacks</h3></div>
-                 <?php
-                    $snacks = new WP_Query( array( 'post_type' => 'snack', 'posts_per_page' => -1, 'post_status' => 'publish', 'meal-category' => 'current week' ) );
-                    if ( $snacks->have_posts() ) :
-                      while ( $snacks->have_posts() ) : $snacks->the_post(); 
-                   ?>
+                 
+
+                <?php
+                    $checkout_snacks = get_field('checkout_snacks', 'option');
+                      if( $checkout_snacks ) :
+                        foreach( $checkout_snacks as $post ):
+                          setup_postdata($post);
 
                     
-                  <div class="col-sm-4 col-xs-6 mix <?php echo get_term_slug_by_post_id(get_the_ID(), 'meal-category' ); ?>">
+                  echo '<div class="col-sm-4 col-xs-6 mix' . get_term_slug_by_post_id(get_the_ID(), 'meal-category' ) . '">'; 
+                        $term_slugs = wp_get_post_terms( get_the_ID(), 'meal-category' );
+                            
+                            foreach( $term_slugs as $term_slug ) {
+                                $all_slugs =  ' '.$term_slug->slug; 
+                            }
 
-                      <div class="min-meals-01">
-                        <div class="quantity-input">
-                        <input data-product="snack" type="button" id="adds-<?php echo get_the_ID(); ?>" value="ADD" class="btn btn-default btn-plus" onclick="add(<?php echo get_the_ID(); ?>)" data-meal-small-image='<?php the_post_thumbnail_url('meal-small-image'); ?>' data-meal-title="<?php echo the_title(); ?>" />&nbsp;
-                        <input type="text" style="" class="onlyNumber form-control cnt-num pull-left" id="no-of-meals-<?php echo get_the_ID(); ?>" value="0" name="no_of_meals" />&nbsp;
-                        <input data-product="snack" type="button" id="subs-<?php echo get_the_ID(); ?>" value="-" class="btn btn-default btn-dash pull-left" style="display:none;" onclick="remove(<?php echo get_the_ID(); ?>)"  />
-                        
-                        </div>
+                          $snack_id = get_the_ID();
+                          $snack_thumbnail = get_the_post_thumbnail_url();
+                          $snack_title = get_the_title();
+                          $snack_content = get_the_content();
+                          $meal_second_image = get_the_post_thumbnail_url($meal_id, 'meal-detail-image' );
 
-                        <div class="mid-image">
-
-                        <a class="view-meals" data-post-id="<?php echo get_the_ID(); ?>" data-post-title="<?php echo the_title(); ?>" data-desc='<?php strip_tags(the_content()); ?>' data-toggle="modal" data-target="#meal-details" data-image="<?php the_post_thumbnail_url( 'meal-detail-image' ); ?>">
-
-                        
-                          <?php
+                          echo '<div class="min-meals-01">';
+                          echo '<div class="quantity-input">';
+                          echo '<input data-product="snack" type="button" id="adds-' . $snack_id . '" value="ADD" class="btn btn-default btn-plus" onclick="add(' . $snack_id . ')" data-meal-small-image="' . $snack_thumbnail .  '" data-meal-title="' . $snack_title . '" />';
+                          echo '<input type="text" style="" class="onlyNumber form-control cnt-num pull-left" id="no-of-meals-' . $snack_id . '" value="0" name="no_of_meals" />';
+                          echo '<input data-product="snack" type="button" id="subs-' . $snack_id . '" value="-" class="btn btn-default btn-dash pull-left" style="display:none;" onclick="remove(' . $snack_id . ')"  />';
+                          echo '</div>';
+                          echo '<div class="mid-image">';
+                          echo '<a class="view-meals" data-post-id="' . $snack_id . '" data-post-title="' . $snack_title . '" data-desc=\'' . $snack_content . '\' data-toggle="modal" data-target="#meal-details" data-image="' . $snack_thumbnail . '">';
+                     
                             if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('meal-image');
-                            }
-                            else {
+                            }  else {
                                 echo '<img width="286px" height="191px" src="' . get_bloginfo( 'stylesheet_directory' ) 
                                     . '/images/dummy-img-01.jpg" />';
                             }
-                            ?>
-                        </a>
-                        </div>
-                        <div class="meals-heading">
 
-                          <a class="view-meals" data-post-id="<?php echo get_the_ID(); ?>" data-post-title="<?php echo the_title(); ?>"  data-toggle="modal" data-target="#meal-details" data-image="<?php the_post_thumbnail_url( 'meal-detail-image' ); ?>" ><p><?php the_title(); ?></p></a>
+                          echo '</a>';
+                          echo '</div>';
+                          echo '<div class="meals-heading">';
+                          echo '<a class="view-meals" data-post-id="' . $snack_id . '" data-post-title="' . $snack_title . '"  data-toggle="modal" data-target="#meal-details" data-image="' . $meal_second_image . '" ><p>' . $snack_title . '</p></a>';
+                          echo '</div>';
+                          echo '</div>';
+                          echo '</div>';
 
-                        </div>
-                      </div>
-                    
-                  </div>
-
-                    
-                  <?php 
-                      endwhile;
-                    endif;
+                        endforeach;
+                      endif;
                   wp_reset_postdata();
                 ?>
                 <!--<div class="gap"></div>

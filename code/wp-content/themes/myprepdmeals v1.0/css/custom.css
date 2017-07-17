@@ -64,9 +64,13 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
     margin: 20px;
 }
 
-.top-author-info img {
+.top-author-info img, .author-avatar img {
     border-radius: 50px;
     float: left;
+}
+
+.author-title {
+    font-size: 16px;
 }
 
 .blog-info {
