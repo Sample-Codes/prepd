@@ -14,6 +14,7 @@
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     1.6.4
+ * This is a custom template, will need to be updated with woocommerce updates
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,7 +45,8 @@ get_header( 'plans' ); ?>
 		 *
 		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
 		 */
-		//do_action( 'woocommerce_after_main_content' );
+		
+		do_action( 'woocommerce_after_main_content' );
 	?>
 
 	<?php
@@ -53,7 +55,8 @@ get_header( 'plans' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		//do_action( 'woocommerce_sidebar' );
+		
+		// do_action( 'woocommerce_sidebar' );
 	?>
  
-<?php //get_footer( 'product' ); ?>
+<?php get_footer( 'product' ); ?>

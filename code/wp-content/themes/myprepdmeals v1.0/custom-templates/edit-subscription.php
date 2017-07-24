@@ -1130,4 +1130,4 @@ jQuery('.view-meals').on('click', function(evt) {
 </div>
 <!-- End : Code for meal detail modal -->  
 
-<?php //get_footer(); ?>
+<?php // get_footer(); ?>

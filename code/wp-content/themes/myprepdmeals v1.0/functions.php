@@ -51,6 +51,12 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 }
 
+// declaring woocommerce support
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
 function myprepdmeals_setup() {
 	/*
 	 * Make theme available for translation.
@@ -259,6 +265,7 @@ function myprepdmeals_scripts() {
 	wp_enqueue_style( 'myprepdmeals-customcss', get_template_directory_uri() . '/css/custom.css', array(), 'v.1.0' );
 	wp_enqueue_style( 'myprepdmeals-owlcss-car', get_template_directory_uri() . '/owl.carousel/owl.carousel.css', array(), 'v.1.0' );
 	wp_enqueue_style( 'myprepdmeals-owlcss', get_template_directory_uri() . '/owl.carousel/owl.theme.default.css', array(), 'v.1.0' );
+	
 
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'myprepdmeals-fonts', myprepdmeals_fonts_url(), array(), null );
@@ -442,3 +449,47 @@ add_filter( 'widget_tag_cloud_args', 'myprepdmeals_widget_tag_cloud_args' );
 @ini_set( 'max_execution_time', '300' );
 
 include('custom-function.php');
+
+/**
+ * Add new fields above 'Update' button.
+ *
+ * @param WP_User $user User object.
+ */
+function tm_additional_profile_fields( $user ) {
+
+    $checkout_meals = get_field('checkout_meals', 11843 );
+
+    // $checkout_list = implode(" ",$checkout_meals);
+
+    ?>
+    <h3>Current Week Selections</h3>
+
+   <h4>Pet Name</h4>
+
+   <?php
+
+   // If is current user's profile (profile.php)
+	if ( defined('IS_PROFILE_PAGE') && IS_PROFILE_PAGE ) {
+    $user_id = get_current_user_id();
+	// If is another user's profile page
+	} elseif (! empty($_GET['user_id']) && is_numeric($_GET['user_id']) ) {
+    $user_id = $_GET['user_id'];
+	// Otherwise something is wrong.
+	} else {
+    die( 'No user id defined.' );
+	}
+
+
+	$key = 'pet_name';
+	$pet_name = get_user_meta( $user_id, $key );
+
+    echo implode(",",$pet_name);
+
+    ?>
+
+
+    <?php
+}
+
+add_action( 'show_user_profile', 'tm_additional_profile_fields' );
+add_action( 'edit_user_profile', 'tm_additional_profile_fields' );

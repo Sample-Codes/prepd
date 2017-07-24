@@ -19,6 +19,7 @@ class WC_Checkout_Field_Editor {
 			'billing_state',
 			'billing_postcode',
 			'billing_city',
+			'billing_country',
 			'shipping_address_1',
 			'shipping_address_2',
 			'shipping_state',
@@ -209,7 +210,9 @@ class WC_Checkout_Field_Editor {
 							<th><?php _e( 'Label', 'woocommerce-checkout-field-editor' ); ?></th>
 							<th><?php _e( 'Placeholder / Option Values', 'woocommerce-checkout-field-editor' ); ?></th>
 							<th width="1%"><?php _e( 'Position', 'woocommerce-checkout-field-editor' ); ?></th>
-							<th class="clear"><?php _e( 'Clear Row', 'woocommerce-checkout-field-editor' ); ?></th>
+							<?php if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) { ?>
+								<th class="clear"><?php _e( 'Clear Row', 'woocommerce-checkout-field-editor' ); ?></th>
+							<?php } ?>
 							<th width="1%"><?php _e( 'Validation Rules', 'woocommerce-checkout-field-editor' ); ?></th>
 							<th width="1%"><?php _e( 'Display Options', 'woocommerce-checkout-field-editor' ); ?></th>
 						</tr>
@@ -286,9 +289,11 @@ class WC_Checkout_Field_Editor {
 									</select>
 								<?php } ?>
 							</td>
-							<td class="clear">
-								<input type="checkbox" name="field_clear[0]" />
-							</td>
+							<?php if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) { ?>
+								<td class="clear">
+									<input type="checkbox" name="field_clear[0]" />
+								</td>
+							<?php } ?>
 							<td>
 								<?php if ( version_compare( WC_VERSION, '3.0.0', '>=' ) ) { ?>
 									<select name="field_validation[0][]" class="wc-enhanced-select" style="width:200px;" multiple="multiple">
@@ -455,9 +460,11 @@ class WC_Checkout_Field_Editor {
 									</select>
 								<?php } ?>
 							</td>
-							<td class="clear">
-								<input type="checkbox" name="field_clear[<?php echo $i; ?>]" <?php checked( isset( $options['clear'] ) && $options['clear'], true ); ?> />
-							</td>
+							<?php if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) { ?>
+								<td class="clear">
+									<input type="checkbox" name="field_clear[<?php echo $i; ?>]" <?php checked( isset( $options['clear'] ) && $options['clear'], true ); ?> />
+								</td>
+							<?php } ?>
 							<td class="field-validation">
 								<?php if ( in_array( $name, $this->locale_fields ) ) : ?>
 									&ndash;
@@ -571,12 +578,14 @@ class WC_Checkout_Field_Editor {
 		$field_placeholder     = ! empty( $_POST['field_placeholder'] ) ? $_POST['field_placeholder'] : array();
 		$field_options         = ! empty( $_POST['field_options'] ) ? $_POST['field_options'] : array();
 		$field_position        = ! empty( $_POST['field_position'] ) ? $_POST['field_position'] : array();
-		$field_clear           = ! empty( $_POST['field_clear'] ) ? $_POST['field_clear'] : array();
+		if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) {
+			$field_clear           = ! empty( $_POST['field_clear'] ) ? $_POST['field_clear'] : array();
+		}
 		$field_validation      = ! empty( $_POST['field_validation'] ) ? $_POST['field_validation'] : array();
 		$field_display_options = ! empty( $_POST['field_display_options'] ) ? $_POST['field_display_options'] : array();
 		$max                   = max( array_map( 'absint', array_keys( $field_names ) ) );
 
-		for ( $i = 0; $i <= $max; $i ++ ) {
+		for ( $i = 0; $i <= $max; $i++ ) {
 			$name     = empty( $field_names[ $i ] ) ? '' : urldecode( sanitize_title( wc_clean( stripslashes( $field_names[ $i ] ) ) ) );
 			$new_name = empty( $new_field_names[ $i ] ) ? '' : urldecode( sanitize_title( wc_clean( stripslashes( $new_field_names[ $i ] ) ) ) );
 
@@ -615,7 +624,10 @@ class WC_Checkout_Field_Editor {
 			$fields[ $name ]['type']    = empty( $field_type[ $i ] ) ? $o_type : wc_clean( $field_type[ $i ] );
 			$fields[ $name ]['label']   = empty( $field_labels[ $i ] ) ? '' : wp_kses_post( trim( stripslashes( $field_labels[ $i ] ) ) );
 
-			$fields[ $name ]['clear']   = empty( $field_clear[ $i ] ) ? false : true;
+			if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) {
+				$fields[ $name ]['clear']   = empty( $field_clear[ $i ] ) ? false : true;
+			}
+
 			$fields[ $name ]['options'] = empty( $field_options[ $i ] ) ? array() : array_map( 'wc_clean', array_map( 'stripslashes', explode( '|', $field_options[ $i ] ) ) );
 
 			// Keys = values
@@ -623,8 +635,15 @@ class WC_Checkout_Field_Editor {
 				$fields[ $name ]['options'] = array_combine( $fields[ $name ]['options'], $fields[ $name ]['options'] );
 			}
 
-			$fields[ $name ]['placeholder'] = empty( $field_placeholder[ $i ] ) ? '' : wc_clean( stripslashes( $field_placeholder[ $i ] ) );
-			$fields[ $name ]['order']       = empty( $field_order[ $i ] ) ? '' : wc_clean( $field_order[ $i ] );
+			$order_text = version_compare( WC_VERSION, '3.0.0', '<' ) ? 'order' : 'priority';
+
+			if ( 'select' !== $fields[ $name ]['type'] && 'multiselect' !== $fields[ $name ]['type'] ) {
+				$fields[ $name ]['placeholder'] = empty( $field_placeholder[ $i ] ) ? '' : wc_clean( stripslashes( $field_placeholder[ $i ] ) );
+			} else {
+				$fields[ $name ]['placeholder'] = __( 'Select some options', 'woocommerce-checkout-field-editor' );
+			}
+
+			$fields[ $name ][ $order_text ] = empty( $field_order[ $i ] ) ? '' : wc_clean( $field_order[ $i ] ) * 10;
 			$fields[ $name ]['enabled']     = empty( $field_enabled[ $i ] ) ? false : true;
 
 			// Non-locale
@@ -687,11 +706,13 @@ class WC_Checkout_Field_Editor {
 	 * @return void
 	 */
 	function sort_fields( $a, $b ) {
-	    if ( ! isset( $a['order'] ) || $a['order'] == $b['order'] ) {
+		$order_text = version_compare( WC_VERSION, '3.0.0', '<' ) ? 'order' : 'priority';
+
+	    if ( ! isset( $a[ $order_text ] ) || $a[ $order_text ] == $b[ $order_text ] ) {
 	        return 0;
 	    }
 
-	    return ( $a['order'] < $b['order'] ) ? -1 : 1;
+	    return ( $a[ $order_text ] < $b[ $order_text ] ) ? -1 : 1;
 	}
 
 	/**

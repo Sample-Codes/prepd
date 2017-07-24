@@ -31,15 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</thead>
 
 	<tbody>
-		<?php 
-	
-	$subscription_order_id = "";
-	foreach ( $subscriptions as $subscription_id => $subscription ) :
-		$subscription_order_id = $subscription->order->id;
-	?>
-	
-
-	
+	<?php foreach ( $subscriptions as $subscription_id => $subscription ) : ?>
 		<tr class="order">
 			<td class="subscription-id order-number" data-title="<?php esc_attr_e( 'ID', 'woocommerce-subscriptions' ); ?>">
 				<a href="<?php echo esc_url( $subscription->get_view_order_url() ); ?>"><?php echo esc_html( sprintf( _x( '#%s', 'hash before order number', 'woocommerce-subscriptions' ), $subscription->get_order_number() ) ); ?></a>
@@ -64,11 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</td>
 			<td class="subscription-actions order-actions">
 				<a href="<?php echo esc_url( $subscription->get_view_order_url() ) ?>" class="button view"><?php echo esc_html_x( 'View', 'view a subscription', 'woocommerce-subscriptions' ); ?></a>
-
-				<?php if ( $subscription->has_status( 'active' )): ?>
-				<a href="<?php echo site_url(); ?>/edit-subscription?subscription_id=<?php echo $subscription_id; ?>&subscription_order_id=<?php echo $subscription_order_id; ?>" class="button view mealselbtn"><?php echo esc_html_x( 'Select Meals', 'Edit a subscription', 'woocommerce-subscriptions' ); ?></a>
-				<?php endif; ?>
-
 				<?php do_action( 'woocommerce_my_subscriptions_actions', $subscription ); ?>
 			</td>
 		</tr>

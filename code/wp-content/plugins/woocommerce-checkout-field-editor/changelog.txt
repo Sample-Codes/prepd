@@ -1,5 +1,15 @@
 *** Checkout Field Editor Changelog ***
 
+2017-07-02 - version 1.5.6
+* Fix - Do not allow to set billing country not required.
+* Fix - Checkout fields not honoring order/priority since WC 3.0.
+* Fix - Unwanted placeholder value showing on select field types.
+* Remove - Clear row option as WC 3.0 no longer needs this.
+* New - Added the new Woo plugin header, for WooCommerce 3.1 compatibility.
+
+2017-05-08 - version 1.5.5
+* Fix - Additional updates for WooCommerce 3.0 compatibility.
+
 2017-04-03 - version 1.5.4
 * Fix - Update for WooCommerce 3.0 compatibility.
 

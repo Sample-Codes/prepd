@@ -954,9 +954,9 @@ class WC_Subscriptions_Switcher {
 	 */
 	public static function switch_order_meta_box_rows( $post ) {
 
-		$subscriptions = array();
-		$switched_ids  = array();
-		$orders        = array();
+		$subscriptions          = array();
+		$switched_subscriptions = array();
+		$orders                 = array();
 
 		// On the subscription page, just show related orders
 		if ( wcs_is_subscription( $post->ID ) ) {
@@ -970,17 +970,16 @@ class WC_Subscriptions_Switcher {
 
 			// Select the subscriptions which had item/s switched to this subscription by its parent order
 			if ( ! empty( $post->post_parent ) ) {
-				$switched_ids = wcs_get_objects_property( wc_get_order( $post->post_parent ), 'subscription_switch', 'multiple' );
+				$switched_subscriptions = wcs_get_subscriptions_for_switch_order( $post->post_parent );
 			}
 
 		// On the Edit Order screen, show any subscriptions with items switched by this order
 		} else {
-			$switched_ids = wcs_get_objects_property( wc_get_order( $post->ID ), 'subscription_switch', 'multiple' );
+			$switched_subscriptions = wcs_get_subscriptions_for_switch_order( $post->ID );
 		}
 
-		if ( is_array( $switched_ids ) ) {
-			foreach ( $switched_ids as $subscription_id ) {
-				$subscription = wcs_get_subscription( $subscription_id );
+		if ( is_array( $switched_subscriptions ) ) {
+			foreach ( $switched_subscriptions as $subscription_id => $subscription ) {
 				wcs_set_objects_property( $subscription, 'relationship', __( 'Switched Subscription', 'woocommerce-subscriptions' ), 'set_prop_only' );
 				$orders[ $subscription_id ] = $subscription;
 			}
@@ -1385,8 +1384,10 @@ class WC_Subscriptions_Switcher {
 				$days_in_new_cycle = wcs_get_days_in_cycle( WC_Subscriptions_Product::get_period( $item_data ), WC_Subscriptions_Product::get_interval( $item_data ) );
 			}
 
-			// We need to use the cart items price to ensure we include extras added by extensions like Product Add-ons
+			// We need to use the cart items price to ensure we include extras added by extensions like Product Add-ons, but we don't want the sign-up fee accounted for in the price, so make sure WC_Subscriptions_Cart::set_subscription_prices_for_calculation() isn't adding that.
+			remove_filter( 'woocommerce_product_get_price', 'WC_Subscriptions_Cart::set_subscription_prices_for_calculation', 100 );
 			$new_price_per_day = ( WC_Subscriptions_Product::get_price( $item_data ) * $cart_item['quantity'] ) / $days_in_new_cycle;
+			add_filter( 'woocommerce_product_get_price', 'WC_Subscriptions_Cart::set_subscription_prices_for_calculation', 100, 2 );
 
 			if ( $old_price_per_day < $new_price_per_day ) {
 

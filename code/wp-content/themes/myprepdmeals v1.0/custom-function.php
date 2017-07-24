@@ -12,17 +12,18 @@ add_filter( 'woocommerce_product_tabs', 'wcs_woo_remove_reviews_tab', 98 );
 /**
  * Redirect users after add to cart.
  */
-function my_custom_add_to_cart_redirect( $url ) {
+function my_custom_add_to_cart_redirect( $new_url ) {
        $current_url = $url_string = "";
        $current_url = $_SERVER["REQUEST_URI"];
        $url_arr     = array();
        $url_arr     = explode('?', $current_url);
-       if(count($url_arr) > 1 ) {
+       if(count($url_arr) > 1){
         $url_string  = $url_arr[1];
        }
        $url         = WC()->cart->get_checkout_url();
        $new_url     = $url . "/?" . $url_string;
     // $url = wc_get_checkout_url(); // since WC 2.5.0
+       return $new_url;
 }
 
     add_filter( 'woocommerce_add_to_cart_redirect', 'my_custom_add_to_cart_redirect' );

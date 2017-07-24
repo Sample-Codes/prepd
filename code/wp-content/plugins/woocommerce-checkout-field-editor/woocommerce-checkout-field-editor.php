@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Checkout Field Editor
  * Plugin URI: https://woocommerce.com/products/woocommerce-checkout-field-editor/
  * Description: Add, remove and modifiy fields shown on your WooCommerce checkout page.
- * Version: 1.5.4
+ * Version: 1.5.6
  * Author: WooCommerce
  * Author URI: https://woocommerce.com
  *
@@ -15,6 +15,7 @@
  * Copyright: © 2009-2017 WooCommerce.
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * Woo: 184594:2b8029f0d7cdd1118f4d843eb3ab43ff
  */
 
 /**
@@ -30,6 +31,122 @@ if ( ! function_exists( 'woothemes_queue_update' ) ) {
 woothemes_queue_update( plugin_basename( __FILE__ ), '2b8029f0d7cdd1118f4d843eb3ab43ff', '184594' );
 
 if ( is_woocommerce_active() ) {
+	define( 'WC_CHECKOUT_FIELD_EDITOR_VERSION', '1.5.6' );
+
+	/**
+	 * Updates the plugin version to DB.
+	 *
+	 * @since 1.5.6
+	 * @version 1.5.6
+	 */
+	function wc_checkout_fields_update_plugin_version() {
+		update_option( 'wc_checkout_field_editor_version', WC_CHECKOUT_FIELD_EDITOR_VERSION );
+	}
+
+	/**
+	 * Performs processes when plugin is activated.
+	 *
+	 * @since 1.5.6
+	 * @version 1.5.6
+	 */
+	function wc_checkout_fields_activate() {
+		wc_checkout_fields_update_plugin_version();
+	}
+
+	register_activation_hook( __FILE__, 'wc_checkout_fields_activate' );
+
+	/**
+	 * Performs installation processes such as migrations or data update.
+	 *
+	 * @since 1.5.6
+	 * @version 1.5.6
+	 */
+	function wc_checkout_fields_install() {
+		$version = get_option( 'wc_checkout_field_editor_version', WC_CHECKOUT_FIELD_EDITOR_VERSION );
+
+		if ( version_compare( WC_VERSION, '3.0.0', '>=' ) && version_compare( $version, '1.5.6', '<' ) ) {
+			wc_checkout_fields_wc30_migrate();
+		}
+	}
+
+	add_action( 'admin_init', 'wc_checkout_fields_install' );
+
+	/**
+	 * Migrates pre WC3.0 data. Pre WC30 checkout field ordering is using
+	 * "order" as the key. After WC30, its using "priority" as the key.
+	 * This migration will rename the key name and re-set the priority values
+	 * to align with WC core.
+	 *
+	 * @since 1.5.6
+	 * @version 1.5.6
+	 */
+	function wc_checkout_fields_wc30_migrate() {
+		$shipping_fields   = get_option( 'wc_fields_shipping', array() );
+		$billing_fields    = get_option( 'wc_fields_billing', array() );
+		$additional_fields = get_option( 'wc_fields_additional', array() );
+
+		if ( ! empty( $shipping_fields ) ) {
+			$migrated_shipping_fields = array();
+
+			foreach ( $shipping_fields as $field => $value_arr ) {
+				$migrated_shipping_value_arrs = array();
+
+				foreach( $value_arr as $k => $v ) {
+					if ( 'order' === $k ) {
+						$migrated_shipping_value_arrs['priority'] = intval( $v ) * 10;
+					} else {
+						$migrated_shipping_value_arrs[ $k ] = $v;
+					}
+				}
+
+				$migrated_shipping_fields[ $field ] = $migrated_shipping_value_arrs;
+			}
+
+			update_option( 'wc_fields_shipping', $migrated_shipping_fields );
+		}
+
+		if ( ! empty( $billing_fields ) ) {
+			$migrated_billing_fields = array();
+
+			foreach ( $billing_fields as $field => $value_arr ) {
+				$migrated_billing_value_arrs = array();
+
+				foreach( $value_arr as $k => $v ) {
+					if ( 'order' === $k ) {
+						$migrated_billing_value_arrs['priority'] = intval( $v ) * 10;
+					} else {
+						$migrated_billing_value_arrs[ $k ] = $v;
+					}
+				}
+
+				$migrated_billing_fields[ $field ] = $migrated_billing_value_arrs;
+			}
+
+			update_option( 'wc_fields_billing', $migrated_billing_fields );
+		}
+
+		if ( ! empty( $additional_fields ) ) {
+			$migrated_additional_fields = array();
+
+			foreach ( $additional_fields as $field => $value_arr ) {
+				$migrated_additional_value_arrs = array();
+
+				foreach( $value_arr as $k => $v ) {
+					if ( 'order' === $k ) {
+						$migrated_additional_value_arrs['priority'] = intval( $v ) * 10;
+					} else {
+						$migrated_additional_value_arrs[ $k ] = $v;
+					}
+				}
+
+				$migrated_additional_fields[ $field ] = $migrated_additional_value_arrs;
+			}
+
+			update_option( 'wc_fields_additional', $migrated_additional_fields );
+		}
+
+		wc_checkout_fields_update_plugin_version();
+	}
 
 	/**
 	 * woocommerce_init_checkout_field_editor function.
@@ -222,7 +339,12 @@ if ( is_woocommerce_active() ) {
 						}
 
 						$fields[ $name ]['class']       = $data[ $name ]['class'];
-						$fields[ $name ]['clear']       = $data[ $name ]['clear'];
+
+						if ( version_compare( WC_VERSION, '3.0.0', '<' ) ) {
+							$fields[ $name ]['clear'] = $data[ $name ]['clear'];
+						} else {
+							$fields[ $name ]['priority'] = $data[ $name ]['priority'];
+						}
 					}
 				}
 			}
@@ -299,7 +421,7 @@ if ( is_woocommerce_active() ) {
 	 */
 	function wc_checkout_fields_date_picker_field( $field = '', $key, $args, $value ) {
 
-		if ( ( ! empty( $args['clear'] ) ) ) {
+		if ( ! empty( $args['clear'] ) && version_compare( WC_VERSION, '3.0.0', '<' ) ) {
 			$after = '<div class="clear"></div>';
 		} else {
 			$after = '';
@@ -342,7 +464,7 @@ if ( is_woocommerce_active() ) {
 	 */
 	function wc_checkout_fields_radio_field( $field = '', $key, $args, $value ) {
 
-		if ( ( ! empty( $args['clear'] ) ) ) {
+		if ( ! empty( $args['clear'] ) && version_compare( WC_VERSION, '3.0.0', '<' ) ) {
 			$after = '<div class="clear"></div>';
 		} else {
 			$after = '';
@@ -382,7 +504,7 @@ if ( is_woocommerce_active() ) {
 	 */
 	function wc_checkout_fields_multiselect_field( $field = '', $key, $args, $value ) {
 
-		if ( ( ! empty( $args['clear'] ) ) ) {
+		if ( ! empty( $args['clear'] ) && version_compare( WC_VERSION, '3.0.0', '<' ) ) {
 			$after = '<div class="clear"></div>';
 		} else {
 			$after = '';
