@@ -485,11 +485,10 @@ function tm_additional_profile_fields( $user ) {
 
     echo implode(",",$pet_name);
 
-    ?>
+}  
 
 
-    <?php
-}
+
 
 add_action( 'show_user_profile', 'tm_additional_profile_fields' );
 add_action( 'edit_user_profile', 'tm_additional_profile_fields' );
