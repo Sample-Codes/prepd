@@ -17,6 +17,59 @@ img {
 height: auto;
 }
 
+.btn-weekly-meal {
+    padding: 0;
+}
+
+.quantity-btn {
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    max-width: 50px;
+    padding: 5px;
+}
+
+.btn-weekly-meal {
+    display: block;
+    white-space: initial;
+    width: 100%;
+}
+
+.btn-weekly-meal img {
+  width: 100%;
+}
+
+p.form-submit {
+    clear: both;
+}
+
+p.form-submit input {
+    padding: 10px 30px;
+    background: #8eb07a;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-bottom: #446134 3px solid;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+table.order-confirmation td {
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+p.edit-order-btn {
+    text-align: right;
+}
+
+div#order-snacks {
+    clear: both;
+}
+
+table.order-confirmation {
+    width: 100%;
+}
+
 /*-- Product Page --*/
 
 .single-product h4 {
@@ -253,10 +306,6 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
     margin: 0 auto;
 }
 
-.top-single-banner {
-    margin: 20px;
-}
-
 .top-banner {
     background-size: cover; 
     padding: 190px 0px 80px;
@@ -337,8 +386,22 @@ nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
 .featured-meals .middle-img:hover img{opacity: 0.5; -moz-transform:scale(1.1); -webkit-transform:scale(1.1); -o-transform:scale(1.1);}
 .caption-link .fa{font-size: 30px; color: #ffffff; left: 48%; top: 45%; position: absolute;display: none;}
 
+/*--- Single Meals ---*/
 
+table.nutrition-info {
+  width: 100%;
+}
 
+table.nutrition-info td {
+  border: 1px solid #bab7b7;
+  padding: 2px 5px;
+}
+
+@media screen and (min-width: 767px) {
+    table.nutrition-info {
+    width: 50%;
+  }
+}
 /*-- Popup --*/
 
 #esi-slide_in {
@@ -1040,7 +1103,6 @@ transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
 
 /*-- 13.10.2016 --*/
 .cont-link{color:#b4d160;}
-.woocommerce-page .entry-header{margin-top: 120px !important;}
 .woocommerce-page .entry-header h1{ font-family: 'HindBold'; text-transform: uppercase; font-size: 22px; color: #6c8e56; border-bottom: #ececec 1px solid; padding-bottom: 10px; margin-bottom: 20px;}
 .woocommerce-page .checkout-page h2, .woocommerce-page h2, .woocommerce-page h3{ font-family: 'HindBold'; text-transform: uppercase; font-size: 22px; color: #6c8e56;}
 .woocommerce-MyAccount-navigation{background: #444444;}

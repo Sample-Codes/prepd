@@ -7,13 +7,10 @@
  * @since Myprepdmeals 1.0
  */
 
-get_header('banner'); 
-$current_post_id=$is_featured = "";
+get_header(); 
+$current_post_id = $is_featured = "";
 $current_post_id = get_the_ID();
 ?>
-
-
-<!-- =============== How it Work image section =============== -->
 
     <div class="full-menu-section">
     <?php  
@@ -29,7 +26,7 @@ $current_post_id = get_the_ID();
                     if( has_post_thumbnail() ) {
                         the_post_thumbnail('meal-post-detail-image'); 
                     }else{
-                        echo '<img width="450" height="450" src="'.get_template_directory_uri().'/images/dummy-img-01.jpg" alt="">';
+                        echo '<img width="450" height="450" src="'. get_template_directory_uri() .'/images/dummy-img-01.jpg" alt="">';
                     }
                   ?>
                   </div>
@@ -37,8 +34,9 @@ $current_post_id = get_the_ID();
                 <div class="col-sm-7">
                   <div class="pro-info-sec">
                     <h3>Meal Description</h3>
-                      <?php the_content(); ?>
+                      <?php the_content(); ?>    
                   </div>
+                
                 </div>
               </div>
             <?php endwhile; ?>
@@ -87,7 +85,7 @@ $current_post_id = get_the_ID();
               ?>
             </div>
           </div>
-      <?php }else{ ?>
+      <?php } else { ?>
            <div class="container">
             <?php while( have_posts() ) : the_post(); ?>
                 <div class="row">
@@ -106,6 +104,13 @@ $current_post_id = get_the_ID();
                     <div class="pro-info-sec">
                       <h3>Meal Description</h3>
                         <?php the_content(); ?>
+
+                        <?php
+
+                      $meals_id = get_the_id();
+                      render_nutrition_table($meals_id);
+
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -151,8 +156,6 @@ $current_post_id = get_the_ID();
             </div>
       <?php } ?>
     </div>
-
-    <!-- =============== Our Philosophy =============== -->
 <script type="text/javascript">
   jQuery( document ).ready(function() {
     jQuery('.attachment-meal-post-detail-image').removeAttr('width');

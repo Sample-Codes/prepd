@@ -9,6 +9,8 @@
  * @since Twenty Sixteen 1.0
  */
 
+ob_start();
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -48,7 +50,10 @@
   } else {
     $banner_url = $default_banner;
   }
-
+    
+if((is_singular( 'meal' ) || is_singular( 'snack' )) && has_post_thumbnail()) {
+  $banner_url = $banner_image;
+}
 
 if (!is_front_page() && !is_home()) : 
   if( is_single() ) {

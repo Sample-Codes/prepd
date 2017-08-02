@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<td class="subscription-total order-total" data-title="<?php echo esc_attr_x( 'Total', 'Used in data attribute. Escaped', 'woocommerce-subscriptions' ); ?>">
 				<?php echo wp_kses_post( $subscription->get_formatted_order_total() ); ?>
 			</td>
-			<?php $subscription_order_id = 'test';
+			<?php $subscription_order_id = 'test'; ?>
 			<td class="subscription-actions order-actions">
 				<a href="<?php echo esc_url( $subscription->get_view_order_url() ) ?>" class="button view"><?php echo esc_html_x( 'View', 'view a subscription', 'woocommerce-subscriptions' ); ?></a>
 				<a href="<?php echo site_url(); ?>/edit-subscription?subscription_id=<?php echo $subscription_id; ?>&amp;subscription_order_id=<?php echo $subscription_order_id; ?>" class="button view"><?php echo esc_html_x( 'Edit', 'Edit a subscription', 'woocommerce-subscriptions' ); ?></a>
